@@ -1,1 +1,6 @@
-<h1>welcome to tangochan</h1>
+<h1>welcome to tangochan <%= current_user.name %></h1>
+
+<% if current_user %>
+<%= render 'user_sidebar' %>
+<% end %>
+

@@ -14,12 +14,12 @@
   <body>
 <div class="row">
     <div class="large-3 columns">
-      <h1>TangoChan</h1>
+      <h1><%= link_to 'TangoChan', root_path %></h1>
     </div>
     <div class="large-9 columns">
       <ul class="button-group right">
         <% if user_signed_in? %>
-       <%= current_user.email %>
+       <%= link_to "#{current_user.email}", user_path(current_user)  %>
       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'button' %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %>
     <% else %>
