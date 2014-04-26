@@ -1,6 +1,35 @@
+<<<<<<< HEAD
 <h1>welcome to tangochan <%= current_user.name %></h1>
 
 <% if current_user %>
 <%= render 'user_sidebar' %>
 <% end %>
 
+=======
+
+<% if current_user == nil %>
+  <%= render "nouser" %>
+<% end %>
+
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© HAMCo International</p>
+        </div>
+        <div class="large-6 columns">
+      <!--     <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+>>>>>>> c24970d824684b5e0842fa296f73b7175a5dcc48
