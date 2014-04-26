@@ -1,4 +1,15 @@
 
+Category.delete_all
+Word.delete_all
+
+Category.create(name: "Numbers")
+Category.create(name: "Foods")
+Category.create(name: "Greetings")
+Category.create(name: "Place Names")
+Category.create(name: "Business Terms")
+Category.create(name: "Slang")
+
+
 
 Word.create(kanji: "一", kana: "いち", english: "one")
 Word.create(kanji: "二", kana: "に", english: "two")
