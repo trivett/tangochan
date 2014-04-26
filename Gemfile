@@ -32,6 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'shoulda-matchers'
+end
+
 
 gem "capybara"
 gem "rspec-rails"

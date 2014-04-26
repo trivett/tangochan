@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-<h1>welcome to tangochan <%= current_user.name %></h1>
 
 <% if current_user %>
-<%= render 'user_sidebar' %>
+<h1>welcome to tangochan <%= current_user.name %></h1>
+  <%= render 'user_sidebar' %>
 <% end %>
 
-=======
+
 
 <% if current_user == nil %>
   <%= render "nouser" %>
@@ -32,4 +31,3 @@
       </div>
     </div>
   </footer>
->>>>>>> c24970d824684b5e0842fa296f73b7175a5dcc48
