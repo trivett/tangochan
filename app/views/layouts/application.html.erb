@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "TangoChan - Smart and Fun Language Learning" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,6 +12,32 @@
   </head>
 
   <body>
+<div class="row">
+    <div class="large-3 columns">
+      <h1>TangoChan</h1>
+    </div>
+    <div class="large-9 columns">
+      <ul class="button-group right">
+        <% if user_signed_in? %>
+       <%= current_user.email %>
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'button' %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %>
+    <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'button'  %>
+        <%= link_to "Login", new_user_session_path, :class => 'button'  %>
+    <% end %>
+    </li>
+
+      </ul>
+    </div>
+  </div>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
