@@ -36,7 +36,6 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-
 gem "capybara"
 gem "rspec-rails"
 gem 'foundation-rails'

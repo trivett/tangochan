@@ -1,10 +1,7 @@
-
 <% if current_user %>
 <h1>welcome to tangochan <%= current_user.name %></h1>
   <%= render 'user_sidebar' %>
 <% end %>
-
-
 
 <% if current_user == nil %>
   <%= render "nouser" %>
