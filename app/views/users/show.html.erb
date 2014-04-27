@@ -16,3 +16,12 @@
   <p><strong>Total words practiced:</strong> <%= @user.words_practiced %></p>
   <p><strong>Batting average:</strong> <%= @user.words_practiced %></p>
 </section>
+
+<section id="user-actions">
+  <%= button_to "New Vocab List", new_list_path, :class => "button new-list" %>
+
+  <ul id="my-lists">
+
+  </ul>
+
+</section>
