@@ -2,6 +2,10 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
   end
 
   def new
@@ -18,9 +22,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-    respond_to do |format|
-      format.js { render js  }
-    end
+  
   end
 
 
@@ -30,3 +32,4 @@ class ListsController < ApplicationController
   end
 
 end
+
