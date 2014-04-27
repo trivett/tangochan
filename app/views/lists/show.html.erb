@@ -1,5 +1,7 @@
 <h2><%= @list.title %></h2>
 
+<%= button_to "Edit this list", edit_list_path(@list), :class => "button", :method => "get" %>
+
 <ul>
   <% @list.words.each do |word| %>
   <div class="show-word">
@@ -10,6 +12,7 @@
     <li><%= meaning %></li>
   <% end %>
   </ul>
+
   </div>
   <% end %>
 

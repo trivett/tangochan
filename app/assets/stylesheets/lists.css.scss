@@ -1,13 +1,15 @@
 .show-word{
   border: solid 1px #CCC;
   box-shadow: 5px 10px 10px 5px #888888;
-  margin: 15px;
+  margin: 0 auto;
+  margin-left: 20px;
   margin-bottom: 20px;
   padding: 50px;
   width: 300px;
-  margin: 0 auto;
   display: inline-block;
 }
 
 
-.show-word p
+.show-word p {
+  font-size: 22px;
+}
