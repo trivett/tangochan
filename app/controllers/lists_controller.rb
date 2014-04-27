@@ -7,13 +7,13 @@ class ListsController < ApplicationController
   def new
     @user = current_user
     @list = List.new
-
   end
 
   def create
     @user = current_user
     @list = List.create(title: params[:list][:title], user_id: @user.id)
-    redirect_to edit_list_path(@list)
+    list_id = @list.id
+    redirect_to list_path(list_id)
   end
 
   def edit

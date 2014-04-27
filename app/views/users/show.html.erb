@@ -18,12 +18,13 @@
 
 <section id="user-actions">
 
-<a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
+  <!-- Create List Modal -->
+  <a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
 
-<div id="new-list" class="reveal-modal" data-reveal>
-  <%= render "lists/new_list_form.html.erb" %>
-</div>
-
+  <div id="new-list" class="reveal-modal" data-reveal>
+    <%= render "lists/new_list_form.html.erb" %>
+  </div>
+  <!-- redirects to lists#edit -->
 
 
     <h2>Your lists:</h2>
