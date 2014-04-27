@@ -1,11 +1,18 @@
-<ul>Name: <%= @user.name %></ul>
-<ul>Email: <%= @user.email %></ul>
-<ul>I speak: <%= @user.native_language %></ul>
-<ul>I'm learning: <%= @user.learning_language %></ul>
-<ul>Location: <%= @user.city %>, <%= @user.country %></ul>
-<hr>
-<ul>My Tangochan Stats</ul> 
-<ul>Words Practiced: <%= @user.words_practiced %></ul>
-<ul>Minutes Practiced: <%= @user.minutes_practiced %></ul>
-<ul><%= @user.words_practiced %></ul>
-etc..
+
+<section id="user-profile">
+  <h2>My Profile:</h2>
+  <p><strong>Name:</strong> <%= @user.name %></p>
+  <p><strong>Email:</strong> <%= @user.email %></p>
+  <p><strong>I speak:</strong> <%= @user.native_language %></p>
+  <p><strong>I'm learning:</strong> <%= @user.learning_language %></p>
+  <p><strong>Location:</strong> <%= @user.city %>, <%= @user.country %></p>
+  <hr>
+
+  <h2>My Tangochan Stats</h2>
+
+  <p><strong>Words Practiced:</strong>  <%= @user.words_practiced %></p>
+  <p><strong>Minutes Practiced:</strong> <%= @user.minutes_practiced %></p>
+
+  <p><strong>Total words practiced:</strong> <%= @user.words_practiced %></p>
+  <p><strong>Batting average:</strong> <%= @user.words_practiced %></p>
+</section>

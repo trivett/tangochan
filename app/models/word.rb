@@ -4,7 +4,7 @@ class Word < ActiveRecord::Base
   has_and_belongs_to_many :lists
   has_and_belongs_to_many :categories
 
-  validates :kanji, :kana, :english, :presence => true
+  validates :kana, :english, :presence => true
 
 
   def meanings

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :lists
 
 
-validates :name, :email, :password, :password_confirmation, :native_language, :learning_language,  presence: true
+validates :name, :email, :password, :password_confirmation,  presence: true
 
 
 
