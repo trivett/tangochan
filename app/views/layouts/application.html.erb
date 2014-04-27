@@ -11,6 +11,7 @@
     <%= csrf_meta_tags %>
   </head>
 
+  <div id="container">
   <body>
 <div class="row">
     <div class="large-3 columns">
@@ -19,7 +20,7 @@
     <div class="large-9 columns">
       <ul class="button-group right">
         <% if user_signed_in? %>
-       Signed in as<%= link_to " #{current_user.name}", user_path(current_user)  %>
+       <span id="whoami">Signed in as<%= link_to " #{current_user.name}", user_path(current_user)  %></span>
 
       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'button' %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %>
@@ -41,6 +42,32 @@
     <% end %>
 
     <%= yield %>
+
+
+    </div> <!-- container -->
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© HAMCo International</p>
+        </div>
+        <div class="large-6 columns">
+      <!--     <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

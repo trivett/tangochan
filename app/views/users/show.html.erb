@@ -8,11 +8,21 @@
   <p><strong>Location:</strong> <%= @user.city %>, <%= @user.country %></p>
   <hr>
 
-  <h2>My Tangochan Stats</h2>
+  <h2>My TangoChan Stats</h2>
 
-  <p><strong>Words Practiced:</strong>  <%= @user.words_practiced %></p>
   <p><strong>Minutes Practiced:</strong> <%= @user.minutes_practiced %></p>
 
   <p><strong>Total words practiced:</strong> <%= @user.words_practiced %></p>
   <p><strong>Batting average:</strong> <%= @user.words_practiced %></p>
+</section>
+
+<section id="user-actions">
+  <%= button_to "New Vocab List", new_list_path, :class => "button new-list", :method => "get" %>
+    <h2>Your lists:</h2>
+    <ul id="users-lists">
+    <% @lists.each do |list| %>
+      <li><%= link_to list.title, list_path(list) %></li>
+      <% end %>
+    </ul>
+
 </section>
