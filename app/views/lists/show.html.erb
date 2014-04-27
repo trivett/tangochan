@@ -1,6 +1,17 @@
 <h2><%= @list.title %></h2>
 
-<%= button_to "Edit this list", edit_list_path(@list), :class => "button", :method => "get" %>
+<%= form_tag("/words/search", method: "get", remote: true) do %>
+  <%= label_tag(:term, "Search for:") %>
+  <%= text_field_tag(:term) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div id="word-results"></div>
+
+
+
+<%= button_to "Add word", edit_list_path(@list), :class => "button", :id => "add", remote: true %>
+
 <div id="list-words-display">
   <ul>
     <% @list.words.each do |word| %>
