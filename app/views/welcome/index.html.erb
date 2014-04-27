@@ -1,8 +1,6 @@
 <% if current_user %>
-<%= render 'user_sidebar' %>
-<% end %>
-
-<% if current_user == nil %>
+  <%= render 'users/show.html.erb' %>
+<% else  %>
   <%= render "nouser" %>
 <% end %>
 
