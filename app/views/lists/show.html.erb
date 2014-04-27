@@ -1,0 +1,16 @@
+<h2><%= @list.title %></h2>
+
+<ul>
+  <% @list.words.each do |word| %>
+  <div class="show-word">
+  <p><strong><%= word.kanji %></strong></p>
+  <p><%= word.kana %></p>
+  <ul>
+  <% word.meanings.each do |meaning| %>
+    <li><%= meaning %></li>
+  <% end %>
+  </ul>
+  </div>
+  <% end %>
+
+</ul>
