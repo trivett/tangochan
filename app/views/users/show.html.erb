@@ -27,11 +27,20 @@
   <!-- redirects to lists#edit -->
 
 
-    <h2>Your lists:</h2>
+    <h2>My lists:</h2>
     <ul id="users-lists">
     <% @lists.each do |list| %>
       <li><%= link_to list.title, list_path(list) %></li>
-      <% end %>
+    <% end %>
     </ul>
+
+    <h2>My bages:</h2> 
+    <ul id="users-badges">
+    <% @badges.each do |badge| %>
+      <li><img src="<%= badge.image_url %>"></li>
+    <% end %>
+    </ul>
+
+
 
 </section>

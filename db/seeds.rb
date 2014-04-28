@@ -32,3 +32,21 @@ number_category.words.create(kanji: "十八", kana: "じゅうはち", english: 
 number_category.words.create(kanji: "十九", kana: "じゅうきゅう", english: "ninteen")
 number_category.words.create(kanji: "二十", kana: "にじゅうに", english: "twenty")
 
+
+ten_words = Badge.create(name: "Ten Words", description: "You have practiced 10 words. Congratulations!", image_url: "http://static.lalawag.com/wp-content/uploads/adventurer1.png")
+
+fifty_words = Badge.create(name: "Fifty Words", description: "You have practiced 50 words. Congratulations!", image_url: "http://www.wikinoticia.com/images2//s3.alt1040.com/files/2011/07/superstar.jpg")
+one_hundred_words = Badge.create(name: "One Hundred Words", description: "You have practiced 100 words. Congratulations!", image_url: "http://drspikecook.com/files/2014/04/100days-2apxw9x.jpg")
+five_hundred_words = Badge.create(name: "Five Hundred Words", description: "You have practiced 500 words. Congratulations!", image_url: "https://www.buzzmath.com/Medias_Collection/Badges/achievement-class-500-gold-stars/badge_l.png")
+
+one_hour = Badge.create(name: "One Hour", description: "You have practiced for 1 hour. Congratulations!", image_url: "http://static.lalawag.com/wp-content/uploads/adventurer1.png")
+
+five_hours = Badge.create(name: "Five Hours", description: "You have practiced for 5 hours. Congratulations!", image_url: "http://www.wikinoticia.com/images2//s3.alt1040.com/files/2011/07/superstar.jpg")
+
+twenty_five_hours = Badge.create(name: "Twenty Five Hours", description: "You have practiced for 25 hours. Congratulations!", image_url: "http://drspikecook.com/files/2014/04/100days-2apxw9x.jpg")
+
+one_hundred_hours = Badge.create(name: "One Hundred Hours", description: "You have practiced for 100 hours. Congratulations!", image_url: "https://www.buzzmath.com/Medias_Collection/Badges/achievement-class-500-gold-stars/badge_l.png")
+
+
+
+
