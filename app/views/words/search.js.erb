@@ -1,10 +1,13 @@
-<% @results.each do |r| %>
-  var word = $("<div><%=j r.kanji %><br><%=j r.kana %><br><%=j r.english %></div>").fadeIn(500);
-  console.log("<%=j r.english %>");
-  word.addClass("show-search-word");
-  word.appendTo("#word-results");
+<% if @results.count > 0 %>
+  <% @results.each do |r| %>
+    var word = $("<div><p><%=j r.kanji %></p><p><%=j r.kana %></p><p><%=j r.english %></p>").fadeIn(500);
+
+    console.log("<%=j r.english %>");
+    console.log("<%= @list.id %>");
+    word.addClass("show-word");
+    word.appendTo("#word-results");
+  <% end %>
+<% else %>
+  var word = $("<p>Sorry no results.</p>");
+    word.appendTo("#word-results");
 <% end %>
-
-
-
-
