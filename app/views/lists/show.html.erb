@@ -3,6 +3,7 @@
 <%= form_tag("/words/search", method: "get", remote: true) do %>
   <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
   <%= text_field_tag(:term) %>
+  <%= hidden_field_tag :list, @list.id %>
   <%= submit_tag("Search", class: "button") %>
 <% end %>
 

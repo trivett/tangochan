@@ -1,8 +1,14 @@
 <% @results.each do |r| %>
-  var word = $("<div><%=j r.kanji %><br><%=j r.kana %><br><%=j r.english %></div>").fadeIn(500);
-  console.log("<%=j r.english %>");
+  var word = $("<div><p><%=j r.kanji %></p><p><%=j r.kana %></p><p><%=j r.english %></p></div>").fadeIn(500);
+  // console.log("<%=j r.english %>");
+  // console.log("<%= @list.words.find(1).kanji %>")
   word.addClass("show-search-word");
   word.appendTo("#word-results");
+
+  var addWordButton = $("<div><%= form_tag("/words/add_to_list", method: "post", remote: true)do %>
+    <% hidden_field_tag :word,  %>
+    <% hidden_field_tag :list, @list.id %>
+    <%= submit_tag("Add to List") %></div>");
 <% end %>
 
 
