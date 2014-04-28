@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   has_many :lists
   has_and_belongs_to_many :badges
+  has_many :friendships
+  has_many :friends, through: :friendships
 
 
 validates :name, :email, :password, :password_confirmation,  presence: true
@@ -25,6 +27,7 @@ validates :name, :email, :password, :password_confirmation,  presence: true
   def stats
     return "Words practiced: #{self.total_practiced}. Batting average: #{self.batting_average}."
   end 
+
 
   # badge functions
 

@@ -1,10 +1,13 @@
 
 <section id="user-profile">
+  <% if false %>
+  <p><%= link_to "Add Friend", friendship_path(:friend_id => user), :method => :post %>
+    <% end %>
   <h2>My Profile:</h2>
   <p><strong>Name:</strong> <%= @user.name %></p>
   <p><strong>Email:</strong> <%= @user.email %></p>
   <p><strong>I speak:</strong> <%= @user.native_language %></p>
-  <p><strong>I'm learning:</strong> <%= @user.learning_language %></p>
+  <p><strong>I'm learning:</strong> Japanese</p>
   <p><strong>Location:</strong> <%= @user.city %>, <%= @user.country %></p>
   <hr>
 
@@ -27,19 +30,19 @@
   <!-- redirects to lists#edit -->
 
 
-    <h2>My lists:</h2>
+    <h2>My Lists:</h2>
     <ul id="users-lists">
     <% @lists.each do |list| %>
       <li><%= link_to list.title, list_path(list) %></li>
     <% end %>
     </ul>
 
-    <h2>My bages:</h2> 
-    <ul id="users-badges">
+    <h2>My Badges:</h2> 
+    <p id="users-badges">
     <% @badges.each do |badge| %>
-      <li><img src="<%= badge.image_url %>"></li>
+      <p><img src="<%= badge.image_url %>"></p>
     <% end %>
-    </ul>
+
 
 
 
