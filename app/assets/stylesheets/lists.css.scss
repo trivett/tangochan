@@ -1,0 +1,23 @@
+#list-words-display{
+  width: 1000px;
+}
+.show-word{
+  border: solid 1px #CCC;
+  box-shadow: 5px 10px 10px 5px #888888;
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding: 50px;
+  width: 300px;
+  display: inline-block;
+}
+.kanji strong{
+  font-size: 36px;
+}
+
+.show-word p, {
+  font-size: 22px;
+  text-align: center;
+}
+
+
