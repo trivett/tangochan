@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   def show
 
     @list = List.find(params[:id])
+    # @word = Word.find(params)
     respond_to do |format|
       format.html { }
       format.js { }
