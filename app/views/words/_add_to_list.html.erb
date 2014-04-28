@@ -1,4 +1,4 @@
-<%= form_tag "/add_to_list", :method => "post" do %>
+<%= form_tag "/add_to_list", :method => "post", remote: true do %>
   <%= hidden_field_tag :word_id, word.id %>
   <%= hidden_field_tag :list_id, @list.id %>
   <%= submit_tag "Add to list", :class =>"button" %>

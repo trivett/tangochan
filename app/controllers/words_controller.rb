@@ -26,7 +26,12 @@ class WordsController < ApplicationController
     @list = List.find(params[:list_id])
     @list.words << @word
 
-    redirect_to list_path(@list)
+    # redirect_to list_path(@list)
+
+    respond_to do |format|
+      format.js {}
+    end
+
   end
 
 end

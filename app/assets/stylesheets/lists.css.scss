@@ -22,20 +22,8 @@
   margin: 5px;
 }
 
-.show-search-word {
-  border: solid 1px #CCC;
-  box-shadow: 5px 10px 10px 5px #888888;
-  max-width: 300px;
-  margin: 50px;
-  margin-left: 0;
-}
 
-.show-search-word p {
-  margin: 5px;
-  padding: 5px;
+.search-result .button {
   margin: 0 auto;
-}
-
-.show-search-word .button {
-  float: right;
+  text-align: center;
 }

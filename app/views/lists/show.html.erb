@@ -20,6 +20,7 @@
       <p><%= meaning %></p>
     <% end %>
     <!-- add a delete button -->
+    <%= link_to "Delete", word, method: :post, remote: true %>
     </div>
     <% end %>
     </ul>

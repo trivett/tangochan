@@ -41,8 +41,7 @@ gem "rspec-rails"
 gem 'foundation-rails'
 
 gem "devise"
-gem "better_errors"
-gem "binding_of_caller"
+
 gem "pry-rails"
 gem "rails-erd"
 gem "nifty-generators"
@@ -60,3 +59,4 @@ gem "nifty-generators"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'rails_12factor', group: :production
