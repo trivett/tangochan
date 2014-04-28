@@ -3,7 +3,8 @@ class WordsController < ApplicationController
   def search
     term = params[:term]
     list = params[:list]
-    @results = Word.where("kanji like '%#{term}%'")
+    @results = Word.where("kanji like '%#{term}%'") 
+
     @list = List.find(list)
     respond_to do |format|
       format.js {}
