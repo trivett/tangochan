@@ -1,16 +1,12 @@
 <h2><%= @list.title %></h2>
 
 <%= form_tag("/words/search", method: "get", remote: true) do %>
-  <%= label_tag(:term, "Search for:") %>
+  <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
   <%= text_field_tag(:term) %>
-  <%= submit_tag("Search") %>
+  <%= submit_tag("Search", class: "button") %>
 <% end %>
 
 <div id="word-results"></div>
-
-
-
-<%= button_to "Add word", edit_list_path(@list), :class => "button", :id => "add", remote: true %>
 
 <div id="list-words-display">
   <ul>

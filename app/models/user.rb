@@ -25,5 +25,22 @@ validates :name, :email, :password, :password_confirmation,  presence: true
     return "Words practiced: #{self.total_practiced}. Batting average: #{self.batting_average}."
   end
 
+  def first_hundred_badge
+  end
+
+  def first_thousand_badge
+  end
+
+  def food_challenge
+  end
+
+  def business_challenge
+  end
+
+  def basic_numbers_challenge
+  end
+
+  # etc
+
 end
 

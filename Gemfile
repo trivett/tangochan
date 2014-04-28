@@ -44,6 +44,7 @@ gem "devise"
 gem "better_errors"
 gem "binding_of_caller"
 gem "pry-rails"
+gem "rails-erd"
 
 
 # Use ActiveModel has_secure_password
