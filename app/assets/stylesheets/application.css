@@ -13,3 +13,28 @@
 
  *= require_tree .
  */
+
+#container{
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.user-form{
+  max-width: 500px;
+  margin: 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+.signin{
+  max-width: 500px;
+  margin:150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+#whoami{
+  padding-left: 10px;
+  padding-right: 10px;
+}

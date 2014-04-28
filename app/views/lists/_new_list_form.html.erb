@@ -1,0 +1,6 @@
+<%= form_for (@list) do |f|%>
+  <h2>Give your new list a title:</h2>
+  <p>E.g. "Genki Textbook chapter 2"</p>
+  <%= f.text_field :title %>
+  <%= f.submit :class => "button" %>
+<% end %>

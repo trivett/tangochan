@@ -1,0 +1,6 @@
+<% if current_user %>
+  <%= render 'users/show.html.erb' %>
+<% else  %>
+  <%= render "nouser" %>
+<% end %>
+

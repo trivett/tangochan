@@ -1,0 +1,7 @@
+<h2>Practice words in one of these categories:</h2>
+
+<ul>
+  <% @categories.each do |category| %>
+  <li><%= link_to "#{category.name}", category %></li>
+  <% end %>
+</ul>

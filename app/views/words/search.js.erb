@@ -1,0 +1,14 @@
+<% if @results.count > 0 %>
+  <% @results.each do |r| %>
+    var word = $("<div><p><%=j r.kanji %></p><p><%=j r.kana %></p><p><%=j r.english %></p>").fadeIn(500);
+    var formHTML = "<%= j render partial: "add_to_list", locals: { word: r } %>";
+    // console.log("<%=j r.english %>");
+    // console.log("<%= @list.id %>");
+    word.addClass("show-word");
+    word.append(formHTML);
+    word.appendTo("#word-results");
+  <% end %>
+<% else %>
+  var word = $("<p>Sorry no results.</p>");
+    word.appendTo("#word-results");
+<% end %>

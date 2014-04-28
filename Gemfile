@@ -32,6 +32,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'shoulda-matchers'
+end
 
 gem "capybara"
 gem "rspec-rails"
@@ -41,6 +44,8 @@ gem "devise"
 gem "better_errors"
 gem "binding_of_caller"
 gem "pry-rails"
+gem "rails-erd"
+
 
 
 # Use ActiveModel has_secure_password
