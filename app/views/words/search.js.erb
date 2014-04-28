@@ -1,7 +1,7 @@
 <% @results.each do |r| %>
-  var word = $("<div><%=j r.english %></div>").fadeIn(500);
+  var word = $("<div><%=j r.kanji %><br><%=j r.kana %><br><%=j r.english %></div>").fadeIn(500);
   console.log("<%=j r.english %>");
-  word.addClass("show-word");
+  word.addClass("show-search-word");
   word.appendTo("#word-results");
 <% end %>
 
