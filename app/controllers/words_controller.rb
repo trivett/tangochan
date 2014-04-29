@@ -27,9 +27,13 @@ class WordsController < ApplicationController
     @word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
     @list.words << @word
+
+    response.cache_control.replace(:no_cache => true)
+
     respond_to do |format|
-      format.js {}
+      format.js { }
     end
+
   end
 
 
