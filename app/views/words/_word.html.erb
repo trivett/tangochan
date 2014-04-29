@@ -1,13 +1,11 @@
 <div class="show-word">
 
-  <div id="<%= word.english%>">
+  <div id="<%= word.kanji%>">
     <p class="kanji"><strong><%= word.kanji %></strong></p>
     <p><%= word.kana %></p>
     <% word.meanings.each do |meaning| %>
       <p><%= meaning %></p>
     <% end %>
-
-
     <div id="tweet-<%= word.kanji %>"></div>
     <%= form_tag("/words/tweet", method: "get", remote: true) do %>
       <%= hidden_field_tag(:term, word.kanji) %>
