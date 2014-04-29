@@ -1,3 +1,4 @@
+$("#word-results").empty();
 <% if @results.count > 0 %>
   <% @results.each do |r| %>
     var word = $("<div><p><%=j r.kanji %></p><p><%=j r.kana %></p><p><%=j r.english %></p></div>").fadeIn(500);
@@ -6,7 +7,7 @@
     // console.log("<%= @list.id %>");
     word.addClass("show-word");
     word.append(formHTML);
-    // $("#word-results").empty();
+
     word.appendTo("#word-results");
   <% end %>
 <% else %>
