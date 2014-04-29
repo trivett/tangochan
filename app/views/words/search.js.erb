@@ -1,6 +1,9 @@
 var wordResults = $('#word-results');
 wordResults.fadeIn(1000);
 
+
+$("#word-results").empty();
+
 <% if @results.count > 0 %>
   <% @results.each do |r| %>
     var word = $("<div><p class='kanji'><strong><%=j r.kanji %></strong></p><p><%=j r.kana %></p><p><%=j r.english %></p></div>").fadeIn(500);
@@ -9,10 +12,11 @@ wordResults.fadeIn(1000);
     // console.log("<%= @list.id %>");
     word.addClass("show-word");
     word.append(formHTML);
-    $("#word-results").empty();
+
     word.appendTo("#word-results");
   <% end %>
 <% else %>
   var word = $("<p>Sorry no results.</p>");
+    $("#word-results").empty();
     word.appendTo("#word-results");
 <% end %>

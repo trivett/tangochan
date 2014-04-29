@@ -12,11 +12,17 @@
 <div id="list-words-display">
   <h2>Words in <%= @list.title %></h2>
   <ul>
+
     <% @list.words.each do |word| %>
-      <%= render word %>
+    <%= render word %>
+    <div id="tweet-<%= word.kanji %>"></div>
     <% end %>
-    </ul>
+
+  </ul>
 
   </ul>
 </div>
-  
+
+
+
+

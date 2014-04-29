@@ -1,0 +1,7 @@
+
+
+var tweetdiv = $("<div><% $client.search(@word, :lang => "ja", :result => "popular").take(1).collect do |tweet| %><p><%= escape_javascript(tweet.user.screen_name) %> tweets: </p><p><%=j tweet.text %></p><% end %></div>").fadeIn(500);
+
+
+
+$('#tweet-<%= @word %>').append(tweetdiv);
