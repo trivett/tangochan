@@ -5,9 +5,16 @@ class WordsController < ApplicationController
     list = params[:list]
     first_initial = term[0]
 
+
     if (first_initial).ord < 500
       @results = Word.where("english like '%#{term}%'")
-      Rails.logger.info(@results)
+
+    if (term[0]).ord < 500
+      @results = Word.where("english like '%#{term}%'")
+    elsif (term[0].ord >= 12368) && (term[0].ord <= 12447)
+      @results = Word.where("kana like '%#{term}%'")
+    elsif (term[0].ord >= 12448) && (term[0].ord <= 12543)
+      @results = Word.where("kana like '%#{term}%'")
     else
       @results = Word.where("kanji like '%#{term}%'")
     end
