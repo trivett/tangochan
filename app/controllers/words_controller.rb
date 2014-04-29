@@ -3,7 +3,13 @@ class WordsController < ApplicationController
   def search
     term = params[:term]
     list = params[:list]
-    @results = Word.where("kanji like '%#{term}%'") 
+    first_initial = term[0]
+
+    if (first_initial).ord < 500
+    @results = Word.where("english like '%#{term}%'")
+    else
+    @results = Word.where("kanji like '%#{term}%'")
+    end
 
     @list = List.find(list)
     respond_to do |format|
