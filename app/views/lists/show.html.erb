@@ -20,6 +20,13 @@
       <p><%= meaning %></p>
     <% end %>
     <!-- add a delete button -->
+
+    <%= form_tag("/words/tweet", method: "get", remote: true) do %>
+      <%= hidden_field_tag(:term, word.kanji) %>
+      <%= submit_tag("See this in a tweet", class: "button") %>
+    <% end %>
+
+    <div id="tweet-<%= word.kanji %>"></div>
     <%= link_to "Delete", word, method: :post, remote: true %>
     </div>
     <% end %>
