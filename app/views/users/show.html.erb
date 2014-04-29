@@ -1,9 +1,11 @@
 
 <section id="user-profile">
-  <% if false %>
-  <p><%= link_to "Add Friend", friendship_path(:friend_id => user), :method => :post %>
-    <% end %>
-  <h2>My Profile:</h2>
+
+<img src="<%= @user.image_url %>">
+
+  <hr>
+
+  <h3>My Profile:</h3>
   <p><strong>Name:</strong> <%= @user.name %></p>
   <p><strong>Email:</strong> <%= @user.email %></p>
   <p><strong>I speak:</strong> <%= @user.native_language %></p>
@@ -11,7 +13,7 @@
   <p><strong>Location:</strong> <%= @user.city %>, <%= @user.country %></p>
   <hr>
 
-  <h2>My TangoChan Stats</h2>
+  <h3>My TangoChan Stats</h3>
 
   <p><strong>Minutes Practiced:</strong> <%= @user.minutes_practiced %></p>
 
@@ -30,19 +32,34 @@
   <!-- redirects to lists#edit -->
 
 
-    <h2>My Lists:</h2>
+    <h3>My Lists:</h3>
     <ul id="users-lists">
     <% @lists.each do |list| %>
       <li><%= link_to list.title, list_path(list) %></li>
     <% end %>
     </ul>
 
-    <h2>My Badges:</h2> 
+    <h3>My Badges:</h3> 
     <p id="users-badges">
     <% @badges.each do |badge| %>
       <p><img src="<%= badge.image_url %>"></p>
     <% end %>
 
+
+    <h3>My Friends:</h3>
+    <% @user.friends.each do |user|%>
+        <ul><%= link_to  "#{user.name}", user %></ul>
+    <% end %>
+
+    <h3>Friended By:</h3>
+    <% @user.inverse_friends.each do |user| %>
+      <ul><%= user.name %></ul>
+    <div id="add-friend"><ul><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></ul></div>
+    <% end %>  
+
+
+
+       
 
 
 

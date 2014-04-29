@@ -1,0 +1,13 @@
+
+ <% @users.each do |user| %>
+  <p><%= link_to " #{user.name}", user  %> - 
+  <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></p>
+
+
+<% end %>
+
+<body onload="show();">
+  <p>Time: <div id="time"></div></p>
+  <input type="button" value="start" onclick="start();">
+  <input type="button" value="pause" onclick="pause();">
+</body>

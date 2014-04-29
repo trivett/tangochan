@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all_except(current_user) 
+  end
+
   def show
-    if current_user
-      @user = current_user
-      @lists = List.where(:user_id => current_user.id)
-      @list = List.new
-      @badges = User.find(params[:id]).badges
-    else
-      redirect_to root_path
-    end
+    @badges = User.find(params[:id]).badges
+    @users = User.all_except(current_user) 
+    @user = User.find(params[:id])
+    @lists = List.where(:user_id => current_user.id)
+    @list = List.new
+
   end
 
 end
