@@ -5,10 +5,12 @@ class WordsController < ApplicationController
     list = params[:list]
     first_initial = term[0]
 
-    if (first_initial).ord < 500
-    @results = Word.where("english like '%#{term}%'")
+    if (term[0]).ord < 500
+      @results = Word.where("english like '%#{term}%'")
+    elsif (term[0].ord >= 12368) && (term[0].ord <= 12447)
+      @results = Word.where("kana like '%#{term}%'")
     else
-    @results = Word.where("kanji like '%#{term}%'")
+      @results = Word.where("kanji like '%#{term}%'")
     end
 
     @list = List.find(list)
