@@ -1,9 +1,9 @@
 Tangochan::Application.routes.draw do
   devise_for :users
+  resources :friendships
   resources :users
   resources :lists
   resources :lists_words
-  resources :friendships
   resources :words do
     collection do
       get "search"

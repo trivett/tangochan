@@ -31,14 +31,12 @@ var Stopwatch = function() {
         return (new Date()).getTime(); 
       }; 
     this.start = function() {
-        // startAt = startAt ? startAt : now();
         if (startAt) {
           startAt = startAt;
         } else {
           startAt = now();
         };
       };
-
     this.pause = function() {
         lapTime = startAt ? lapTime + now() - startAt : lapTime;
         startAt = 0; 
