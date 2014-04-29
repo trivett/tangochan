@@ -5,6 +5,7 @@ Tangochan::Application.routes.draw do
   resources :lists
   resources :lists_words
   get "/words/tweet", to: "words#tweet"
+  post "/words/remove_from_list", to: "words#remove_from_list"
   resources :words do
     collection do
       get "search"

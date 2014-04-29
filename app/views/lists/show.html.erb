@@ -12,23 +12,11 @@
 <div id="list-words-display">
   <h2>Words in <%= @list.title %></h2>
   <ul>
+
     <% @list.words.each do |word| %>
-    <div class="show-word">
-    <p class="kanji"><strong><%= word.kanji %></strong></p>
-    <p><%= word.kana %></p>
-    <% word.meanings.each do |meaning| %>
-      <p><%= meaning %></p>
-    <% end %>
-    <!-- add a delete button -->
+      <%= render word %>
 
 
-    <div id="tweet-<%= word.kanji %>"></div>
-    <%= form_tag("/words/tweet", method: "get", remote: true) do %>
-      <%= hidden_field_tag(:term, word.kanji) %>
-      <%= submit_tag("See this in a tweet", class: "button", :"data-reveal-id" => "tweet-#{word.kanji}") %>
-    <% end %>
-    <%= link_to "Delete", word, method: :post, remote: true %>
-    </div>
     <% end %>
     </ul>
 
