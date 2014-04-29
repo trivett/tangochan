@@ -13,25 +13,23 @@ class WordsController < ApplicationController
 
 
   def add_to_list
-
-    # word_to_add = params[:word]
-  #   list_to_add_to = params[:list]
-
-  #   @list = List.find(list)
-  #   @word = word_to_add
-
-     # @list.words << @word
-    # render text: params.inspect
     @word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
     @list.words << @word
 
-    # redirect_to list_path(@list)
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def remove_from_list
+    @word = Word.find(params[:word_id])
+    @list = List.find(params[:list_id])
+    @list.words.delete(@word)
 
     respond_to do |format|
       format.js {}
     end
-
   end
 
 end

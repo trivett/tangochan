@@ -13,17 +13,10 @@
   <h2>Words in <%= @list.title %></h2>
   <ul>
     <% @list.words.each do |word| %>
-    <div class="show-word">
-    <p class="kanji"><strong><%= word.kanji %></strong></p>
-    <p><%= word.kana %></p>
-    <% word.meanings.each do |meaning| %>
-      <p><%= meaning %></p>
-    <% end %>
-    <!-- add a delete button -->
-    <%= link_to "Delete", word, method: :post, remote: true %>
-    </div>
+      <%= render word %>
     <% end %>
     </ul>
 
   </ul>
 </div>
+  
