@@ -9,6 +9,8 @@ class WordsController < ApplicationController
       @results = Word.where("english like '%#{term}%'")
     elsif (term[0].ord >= 12368) && (term[0].ord <= 12447)
       @results = Word.where("kana like '%#{term}%'")
+    elsif (term[0].ord >= 12448) && (term[0].ord <= 12543)
+      @results = Word.where("kana like '%#{term}%'")
     else
       @results = Word.where("kanji like '%#{term}%'")
     end
