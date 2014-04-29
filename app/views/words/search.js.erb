@@ -11,5 +11,6 @@
   <% end %>
 <% else %>
   var word = $("<p>Sorry no results.</p>");
+    $("#word-results").empty();
     word.appendTo("#word-results");
 <% end %>

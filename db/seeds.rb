@@ -1,6 +1,7 @@
-
+require 'csv'
 Category.delete_all
 Word.delete_all
+Badge.delete_all
 
 number_category = Category.create(name: "Numbers")
 food_category = Category.create(name: "Foods")
@@ -46,6 +47,12 @@ five_hours = Badge.create(name: "Five Hours", description: "You have practiced f
 twenty_five_hours = Badge.create(name: "Twenty Five Hours", description: "You have practiced for 25 hours. Congratulations!", image_url: "http://drspikecook.com/files/2014/04/100days-2apxw9x.jpg")
 
 one_hundred_hours = Badge.create(name: "One Hundred Hours", description: "You have practiced for 100 hours. Congratulations!", image_url: "https://www.buzzmath.com/Medias_Collection/Badges/achievement-class-500-gold-stars/badge_l.png")
+
+
+CSV.parse(File.read('lib/assets/data.csv'), headers: true) do |row|
+  x = Word.new(kanji: row[0], kana: row[1], english: row[2])
+  x.save
+end
 
 
 
