@@ -6,9 +6,10 @@ class WordsController < ApplicationController
     first_initial = term[0]
 
     if (first_initial).ord < 500
-    @results = Word.where("english like '%#{term}%'")
+      @results = Word.where("english like '%#{term}%'")
+      Rails.logger.info(@results)
     else
-    @results = Word.where("kanji like '%#{term}%'")
+      @results = Word.where("kanji like '%#{term}%'")
     end
 
     @list = List.find(list)
