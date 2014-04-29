@@ -1,5 +1,6 @@
 Tangochan::Application.routes.draw do
   devise_for :users
+  resources :friendships
   resources :users
   resources :lists
   resources :lists_words

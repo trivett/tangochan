@@ -1,49 +1,5 @@
-
-<section id="user-profile">
-  <% if false %>
-  <p><%= link_to "Add Friend", friendship_path(:friend_id => user), :method => :post %>
-    <% end %>
-  <h2>My Profile:</h2>
-  <p><strong>Name:</strong> <%= @user.name %></p>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <p><strong>I speak:</strong> <%= @user.native_language %></p>
-  <p><strong>I'm learning:</strong> Japanese</p>
-  <p><strong>Location:</strong> <%= @user.city %>, <%= @user.country %></p>
-  <hr>
-
-  <h2>My TangoChan Stats</h2>
-
-  <p><strong>Minutes Practiced:</strong> <%= @user.minutes_practiced %></p>
-
-  <p><strong>Total words practiced:</strong> <%= @user.words_practiced %></p>
-  <p><strong>Batting average:</strong> <%= @user.words_practiced %></p>
-</section>
-
-<section id="user-actions">
-
-  <!-- Create List Modal -->
-  <a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
-
-  <div id="new-list" class="reveal-modal" data-reveal>
-    <%= render "lists/new_list_form.html.erb" %>
-  </div>
-  <!-- redirects to lists#edit -->
-
-
-    <h2>My Lists:</h2>
-    <ul id="users-lists">
-    <% @lists.each do |list| %>
-      <li><%= link_to list.title, list_path(list) %></li>
-    <% end %>
-    </ul>
-
-    <h2>My Badges:</h2> 
-    <p id="users-badges">
-    <% @badges.each do |badge| %>
-      <p><img src="<%= badge.image_url %>"></p>
-    <% end %>
-
-
-
-
-</section>
+<% if current_user && current_user.id = params[:id] %>
+  <%= render "current_user_profile" %>
+<% else %>
+  <%= render "not_current_user_profile"  %>
+<% end %>

@@ -2,16 +2,16 @@ class User < ActiveRecord::Base
 
   has_many :lists
   has_and_belongs_to_many :badges
-  has_many :friendships
-  has_many :friends, through: :friendships
+  has_many :friendships, :uniq => true
+  has_many :friends, through: :friendships, :uniq => true
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
+  has_many :inverse_friends, through: :inverse_friendships, :source => :user,  :uniq => true
 
-
-validates :name, :email, :password, :password_confirmation,  presence: true
-
-
+  validates :name, :email, :password, :password_confirmation,  presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -28,13 +28,11 @@ validates :name, :email, :password, :password_confirmation,  presence: true
     return "Words practiced: #{self.total_practiced}. Batting average: #{self.batting_average}."
   end 
 
+  def self.all_except(user)
+  where.not(id: user)
+  end
 
   # badge functions
-
-  def badge_exists?
-    if !self.badges.include?()
-  end
-  end
 
 
 def words_badges
