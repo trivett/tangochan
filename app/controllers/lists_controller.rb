@@ -22,11 +22,13 @@ class ListsController < ApplicationController
     redirect_to list_path(list_id)
   end
 
-  def edit
+  def test
     @list = List.find(params[:id])
-
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
-
   def search
      @lists = List.where(:title => params[:search])
   end
