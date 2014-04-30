@@ -1,76 +1,14 @@
 
 <section id="user-profile">
 
-<img src="<%= @user.image_url %>">
+  <h2>Welcome back, <%= @user.name %></h2>
+  <img src="<%= @user.image_url %>" id="user_image">
 
-  <hr>
-
-  <h3>My Profile:</h3>
-  <p><strong>Name:</strong> <%= @user.name %></p>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <p><strong>I speak:</strong> <%= @user.native_language %></p>
-  <p><strong>I'm learning:</strong> Japanese</p>
-  <p><strong>Location:</strong> <%= @user.city %>, <%= @user.country %></p>
-  <hr>
-
-  <h3>My TangoChan Stats</h3>
+  <%= link_to "Your profile", "/me/#{current_user.id}", :class => "button"  %>
+  <h3>Your TangoChan Stats</h3>
 
   <p><strong>Minutes Practiced:</strong> <%= @user.minutes_practiced %></p>
 
   <p><strong>Total words practiced:</strong> <%= @user.words_practiced %></p>
   <p><strong>Batting average:</strong> <%= @user.words_practiced %></p>
-</section>
-
-<section id="user-actions">
-
-  <!-- Create List Model -->
-  <a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
-
-  <div id="new-list" class="reveal-modal" data-reveal>
-    <%= render "lists/new_list_form.html.erb" %>
-  </div>
-  <!-- redirects to lists#edit -->
-
-
-    <h3>My Lists:</h3>
-    <ul id="users-lists">
-    <% @lists.each do |list| %>
-      <li><%= link_to list.title, list_path(list) %></li>
-    <% end %>
-    </ul>
-
-    <h3>My Badges:</h3> 
-    <p id="users-badges">
-    <% @badges.each do |badge| %>
-      <p><img src="<%= badge.image_url %>"></p>
-    <% end %>
-
-
-    <h3>My Friends:</h3>
-    <% @user.friends.each do |user|%>
-        <ul><%= link_to  "#{user.name}", user %></ul>
-    <% end %>
-
-    <h3>Friended By:</h3>
-     
-     <% @output = (@user.inverse_friends.each {|inverse| inverse.id}) - (@user.friends.each {|user| user.id }) %>
-      <%  @output.each do |friended_by| %>
-      <%= link_to "#{friended_by.name}", friended_by %>
-      <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </section>

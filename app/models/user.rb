@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def self.all_except(user)
-  where.not(id: user)
+    where.not(id: user)
   end
 
 
