@@ -29,6 +29,7 @@ class ListsController < ApplicationController
       format.js {}
     end
   end
+  
   def search
      @lists = List.where(:title => params[:search])
                      #  "title like ?", "%#{query}%
