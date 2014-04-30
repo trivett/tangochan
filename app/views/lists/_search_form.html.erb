@@ -1,0 +1,5 @@
+<%= form_tag("/lists/search/:title", method: "get", remote: true) do %>
+  <%= label_tag(:title, "Search for a list on TangoChan") %>
+  <%= text_field_tag(:title) %>
+  <%= submit_tag("Search", class: "button") %>
+<% end %>

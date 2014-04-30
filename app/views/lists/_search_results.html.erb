@@ -1,0 +1,6 @@
+  <ul>
+    <% @lists.each do |list| %>
+  <li><%= link_to list.title,
+    :action => 'show', :id => list.id  %></li>
+  <% end %>
+  </ul>

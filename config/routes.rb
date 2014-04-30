@@ -2,6 +2,7 @@ Tangochan::Application.routes.draw do
   devise_for :users
   resources :friendships
   resources :users
+  get "/lists/search/:title", to: "lists#search"
   resources :lists
   resources :lists_words
   get "/words/tweet", to: "words#tweet"
