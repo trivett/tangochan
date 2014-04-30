@@ -32,4 +32,17 @@
   border: solid 10px #000;
   width:600px;
   height:300px;
+  text-align: center;
+  padding: 50px;
+  margin: 100px auto; 
 }
+
+.flashCard p {
+  font-size:24px;
+  font-weight: bold; 
+}
+
+#submitAnswerButton {
+  margin-top: 20px;
+}
+

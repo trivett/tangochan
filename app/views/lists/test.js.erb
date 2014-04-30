@@ -1,2 +1,55 @@
 console.log("workinggggggggggg");
 
+
+
+function startTest(){
+  var startButton = $('#startTestButton');
+  startButton.fadeOut(50);
+
+  var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
+  pauseButton.fadeIn(300);
+  pauseButton.appendTo('#container');
+
+  var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
+  flashCard.fadeIn(500);
+  flashCard.appendTo('#container');
+
+  var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
+  flashCardInputBox.appendTo(flashCard);
+
+  var submitAnswerButton = $("<button id = 'submitAnswerButton'>Submit Answer</button>");
+  submitAnswerButton.appendTo(flashCard);
+
+  pauseButton.click(pauseTest);
+
+  submitAnswerButton.click(submitAnswer);
+}
+
+function pauseTest(){
+  alert("pause test");
+}
+
+function submitAnswer(){
+  var userAnswerArray = [];
+  var userAnswer = $('#flashCardInputBox').val();
+
+  userAnswerArray.push(userAnswer);
+
+  alert(userAnswerArray[1]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+startTest();
