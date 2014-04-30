@@ -1,13 +1,32 @@
 
-  <div class="row">
+  <div class="row" id="hero">
     <div class="large-12 columns" id="hero">
         <h2>The fun way to learn Japanese</h2>
     </div>
     <hr>
   </div>
-  <!-- Second Band (Image Left with Text) -->
+
+
 
   <div class="row">
+    <div class="large-8 columns">
+      <h3>A great way to practice vocabulary.</h3>
+
+      <p>Learning a language is about more than just learning new words, but you still need to cram them in. TangoChan makes rote memorization more fun and efficient.</p>
+
+      <p>With TangoChan, you practice the words that you don't know more than the ones that you know, thus saving time.</p>
+
+      <p><%= link_to "Search for a list to try it out", lists_path %></p>
+
+    </div>
+
+    <div class="large-4 columns">
+      <img src="http://grapevinestar.com/media/wp-content/uploads/2011/10/kabukicho-shinjuku-district-tokyo-japan.jpg">
+    </div>
+  </div>
+
+
+<div class="row">
     <div class="large-4 columns">
       <img src="http://2.bp.blogspot.com/_qAiteMOBQnY/S8lnVDoCXaI/AAAAAAAAB_M/6NWdNoNrl24/s400/sakura+fujiyama,tokyo.jpg">
     </div>
@@ -15,52 +34,18 @@
       <h3>Try a vocab challenge to win badges:</h3>
       <div class="row">
         <div class="large-6 columns">
+          <p>Win badges for reaching milestones and completing our vocabulary challenges.</p>
+
           <p><%= link_to "Try a category to practice", categories_path %></p>
         </div>
         <div class="large-6 columns">
-          <p>Picture of a badge here.</p>
+          <%= image_tag ("hundred.png"), :id => "badge-example" %>
         </div>
       </div>
     </div>
   </div>
 
-
-  <!-- Third Band (Image Right with Text) -->
-
-  <div class="row">
-    <div class="large-8 columns">
-      <h3>This is a content section.</h3>
-
-      <p>Learning a language is about more than just learning new words, but you still need to cram them in. TangoChan makes rote memorization more fun and efficient. </p>
-
-      <p>With TangoChan, you practice the words that you don't know more than the ones that you know, thus saving time</p>
-
-    </div>
-    <div class="large-4 columns">
-      <img src="http://grapevinestar.com/media/wp-content/uploads/2011/10/kabukicho-shinjuku-district-tokyo-japan.jpg">
-    </div>
-  </div>
-
-  <!-- BAND 4 -->
-
-  <div class="row">
-    <div class="large-4 columns">
-      <img src="http://www.wowomandarin.com/StocksSoftware/UserFiles/IMG_3122(2).jpg">
-    </div>
-    <div class="large-8 columns">
-      <h3>Find friends, share vocabulary lists:</h3>
-      <div class="row">
-        <div class="large-6 columns">
-          <p></p>
-        </div>
-        <div class="large-6 columns">
-          <p>Picture of a badge here.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
+<div class="row">
     <div class="large-8 columns">
       <h3>Learn Japanese from real-world examples.</h3>
 
@@ -71,3 +56,19 @@
       <img src="http://rakux2ikuji.net/wp-content/uploads/smapho.jpg">
     </div>
   </div>
+
+  <div class="row">
+    <div class="large-4 columns">
+      <img src="http://www.wowomandarin.com/StocksSoftware/UserFiles/IMG_3122(2).jpg">
+    </div>
+    <div class="large-8 columns">
+      <h3>Find friends, share vocabulary lists:</h3>
+      <div class="row">
+        <div class="large-6 columns">
+          <p>It's no fun to learn alone. You can borrow vocabulary decks from other learners and search for language buddies in your city.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
