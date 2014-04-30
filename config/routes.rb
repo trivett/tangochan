@@ -1,5 +1,6 @@
 Tangochan::Application.routes.draw do
   devise_for :users
+  post "/friendships/create", to: "friendships#create"
   resources :friendships
   resources :users
   get "/lists/search/:title", to: "lists#search"
