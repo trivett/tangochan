@@ -27,6 +27,14 @@ class ListsController < ApplicationController
 
   end
 
+  def test
+    @list = List.find(params[:id])
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
 
   private
   def list_params
