@@ -6,12 +6,6 @@ class Friendship < ActiveRecord::Base
    validates_uniqueness_of :user_id, :scope => [:friend_id]
 
 
-  # def unique_friendship
-  #     if current_user.friends.include?(@user_page)
-  # end
-
-
-
 end
 
 
