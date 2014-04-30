@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
   has_many :inverse_friends, through: :inverse_friendships, :source => :user,  :uniq => true
 
+
   validates :name, :email, :password, :password_confirmation,  presence: true
 
   # Include default devise modules. Others available are:
@@ -57,6 +58,7 @@ def time_badges
         self.badges << (Badge.where(:name => "One Hundred Hours"))
     end
 end
+
 
 
 end
