@@ -5,9 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @friendship = Friendship.where(user_id: current_user.id)
-
+    @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])
     if params[:id] == current_user.id
 
        @badges = current_user.badges

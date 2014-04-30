@@ -7,14 +7,14 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
   has_many :inverse_friends, through: :inverse_friendships, :source => :user,  :uniq => true
 
-
   validates :name, :email, :password, :password_confirmation,  presence: true
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def find_friend
+
+  end
 
   def total_practiced
     return self.got_right + self.got_wrong
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def stats
     return "Words practiced: #{self.total_practiced}. Batting average: #{self.batting_average}."
-  end 
+  end
 
   def self.all_except(user)
   where.not(id: user)
@@ -46,7 +46,7 @@ def words_badges
         self.badges << (Badge.where(:name => "Five Hundred Words"))
     end
 end
-  
+
 def time_badges
    if self.minutes_practiced > 60 && self.minutes_practiced < 300
         self.badges << Badge.where(:name => "One Hour")
@@ -58,6 +58,10 @@ def time_badges
         self.badges << (Badge.where(:name => "One Hundred Hours"))
     end
 end
+
+  def category_list_badges
+
+  end
 
 
 
