@@ -5,11 +5,9 @@ class UsersController < ApplicationController
   end
 
   def show
-
-    @friendship = Friendship.where(user_id: current_user.id)
     @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])
+   @list = List.new
 
-       @list = List.new
     if params[:id] == current_user.id
        @badges = current_user.badges
        @users = User.all_except(current_user)
@@ -36,6 +34,7 @@ class UsersController < ApplicationController
   def profile
     @user = User.find(params[:id])
   end
+
 end
 
 

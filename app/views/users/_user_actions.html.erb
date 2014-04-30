@@ -45,9 +45,12 @@
     <% if @user.inverse_friends.count == 0 %>
       <p>Nobody friended you yet.</p>
     <% else %>
-      <% @user.inverse_friends.each do |user| %>
-        <p><%= link_to "#{user.name}", user %></p>
+      <% @output = (@user.inverse_friends.each {|inverse| inverse.id}) - (@user.friends.each {|user| user.id }) %>
+      <%  @output.each do |friended_by| %>
+      <%= link_to "#{friended_by.name}", friended_by %>
       <% end %>
     <% end %>
+
+
 
 </section>

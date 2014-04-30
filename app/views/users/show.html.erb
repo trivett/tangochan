@@ -8,7 +8,6 @@
   <%= render "add_friend" %>
 <% end %>
 
-
 <% if current_user && current_user.id != @user_page.id && current_user.friends.include?(@user_page)%>
   <%= render "remove_friend" %>
 <% end %>
