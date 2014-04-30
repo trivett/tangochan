@@ -1,0 +1,5 @@
+<%= form_tag("/users/search/:city", :method => 'get') do %>
+    <%= label_tag("Search for friends by city:") %>
+    <%= text_field :search, params[:city], :id => 'search_field' %>
+    <%= submit_tag "Search" %>
+  <% end %>
