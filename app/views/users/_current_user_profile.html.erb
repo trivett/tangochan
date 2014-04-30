@@ -52,10 +52,24 @@
     <% end %>
 
     <h3>Friended By:</h3>
-    <% @user.inverse_friends.each do |user| %>
-      <ul><%= link_to "#{user.name}", user %></ul>
- 
-    <% end %>  
+     
+     <% @output = (@user.inverse_friends.each {|inverse| inverse.id}) - (@user.friends.each {|user| user.id }) %>
+      <%  @output.each do |friended_by| %>
+      <%= link_to "#{friended_by.name}", friended_by %>
+      <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

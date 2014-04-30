@@ -12,9 +12,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def find_friend
-
+  def self.all_except(user)
+  where.not(id: user)
   end
+
 
   def total_practiced
     return self.got_right + self.got_wrong
@@ -28,9 +29,6 @@ class User < ActiveRecord::Base
     return "Words practiced: #{self.total_practiced}. Batting average: #{self.batting_average}."
   end
 
-  def self.all_except(user)
-  where.not(id: user)
-  end
 
   # badge functions
 

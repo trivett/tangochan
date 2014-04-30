@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @friendship = Friendship.where(user_id: current_user.id)
+
+
     @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])
+
     if params[:id] == current_user.id
 
        @badges = current_user.badges
@@ -24,6 +26,8 @@ class UsersController < ApplicationController
        @lists = List.where(:user_id => params[:id])
        @list = List.new
     end
+
+     @friended_by = @user.friendships - @user.inverse_friends
   end
 
   def search
@@ -33,6 +37,10 @@ class UsersController < ApplicationController
   def search_city
     @users = User.where(:city => params[:search])
   end
+
+    
+
+
 end
 
 
