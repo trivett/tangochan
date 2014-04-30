@@ -1,10 +1,8 @@
 class Friendship < ActiveRecord::Base
-  belongs_to :user, foreign_key: 'user_id'
+  belongs_to :user, foreign_key: 'user_id', :uniq => true
   belongs_to :friend, foreign_key: 'friend_id',
-    class_name: "User"
-
-  def unique_friends 
-
-  end
+    class_name: "User",  :uniq => true
 
 end
+
+
