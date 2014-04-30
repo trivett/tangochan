@@ -22,11 +22,6 @@ class ListsController < ApplicationController
     redirect_to list_path(list_id)
   end
 
-  def edit
-    @list = List.find(params[:id])
-
-  end
-
   def test
     @list = List.find(params[:id])
     respond_to do |format|
@@ -34,7 +29,9 @@ class ListsController < ApplicationController
       format.js {}
     end
   end
-
+  def search
+     @lists = List.where(:title => params[:search])
+  end
 
   private
   def list_params
