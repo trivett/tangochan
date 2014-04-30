@@ -7,5 +7,8 @@ $(document).ready(function(){
 });
 
 function startTest(){
-  alert("working baby");
+  var flashCard = $("<div class = 'flashCard'><div>");
+  flashCard.fadeIn(1000);
+  flashCard.appendTo('#container');
+ 
 }
