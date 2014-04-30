@@ -1,5 +1,21 @@
-<% if current_user && current_user.id = params[:id] %>
+<%= render "search" %>
+<%= render "search_city" %>
+<% if current_user && current_user.id == params[:id].to_i %>
   <%= render "current_user_profile" %>
 <% else %>
-  <%= render "not_current_user_profile"  %>
+  <%= render "not_current_user_profile" %>
 <% end %>
+
+<% if current_user && current_user.id != @user_page.id && !(current_user.friends.include?(@user_page))%>
+  <%= render "add_friend" %>
+<% end %>
+
+
+<% if current_user && current_user.id != @user_page.id && current_user.friends.include?(@user_page)%>
+  <%= render "remove_friend" %>
+<% end %>
+
+
+
+
+

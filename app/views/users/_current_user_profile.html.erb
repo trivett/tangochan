@@ -23,7 +23,7 @@
 
 <section id="user-actions">
 
-  <!-- Create List Modal -->
+  <!-- Create List Model -->
   <a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
 
   <div id="new-list" class="reveal-modal" data-reveal>
@@ -51,15 +51,10 @@
         <ul><%= link_to  "#{user.name}", user %></ul>
     <% end %>
 
-    <% @friendship.each do |friend| %>
-
-    <ul><%= link_to "Remove Friend", friendship_path(friend), :method => :delete%></ul>
-    <% end %>
-
     <h3>Friended By:</h3>
     <% @user.inverse_friends.each do |user| %>
-      <ul><%= user.name %></ul>
-    <div id="add-friend"><ul><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></ul></div>
+      <ul><%= link_to "#{user.name}", user %></ul>
+ 
     <% end %>  
 
 
