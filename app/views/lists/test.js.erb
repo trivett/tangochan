@@ -1,16 +1,17 @@
 console.log("workinggggggggggg");
 
+var startButton = $('#startTestButton');
+  startButton.fadeOut(50);
+
+var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
+  pauseButton.fadeIn(300);
+  pauseButton.appendTo('#container'); 
 
 
 function startTest(){
-  var startButton = $('#startTestButton');
-  startButton.fadeOut(50);
-
-  var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
-  pauseButton.fadeIn(300);
-  pauseButton.appendTo('#container');
 
   var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
+  var englishAnswer = $("<div id = 'englishAnswer'><%=@list.words[0].english%></div>");
   flashCard.fadeIn(500);
   flashCard.appendTo('#container');
 
@@ -22,21 +23,52 @@ function startTest(){
 
   pauseButton.click(pauseTest);
 
+  console.log((englishAnswer).text());  
+
   submitAnswerButton.click(submitAnswer);
 }
+
 
 function pauseTest(){
   alert("pause test");
 }
 
 function submitAnswer(){
+  var flashCard = $(".flashCard");
+  flashCard.hide();
+
   var userAnswerArray = [];
   var userAnswer = $('#flashCardInputBox').val();
 
   userAnswerArray.push(userAnswer);
 
-  alert(userAnswerArray[1]);
+
+  storeAnswers();
+  startTest();
 }
+
+function storeAnswers(){
+  var userAnswer = $('#flashCardInputBox').val();
+  var actualAnswer = $('#englishAnswer').text();
+
+  console.log(userAnswer);
+
+  $.ajax({
+    url: '/lists/<%=@list.id%>/test',
+    method: 'post',
+    data: {
+      flashCardInput: userAnswer,
+      flashCardAnswer: actualAnswer
+    },
+    dataType: 'json'
+  }).done(function(data){
+    console.log(data);
+  });
+
+}
+
+
+
 
 
 
