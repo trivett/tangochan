@@ -31,6 +31,7 @@ class ListsController < ApplicationController
   end
   def search
      @lists = List.where(:title => params[:search])
+                     #  "title like ?", "%#{query}%
   end
 
   private

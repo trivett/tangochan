@@ -3,6 +3,8 @@ Tangochan::Application.routes.draw do
   post "/friendships/create", to: "friendships#create"
   resources :friendships
   resources :users
+  get "/users/search/:city", to: "users#search_city"
+  get "/users/search/:email", to: "users#search"
   get "/lists/search/:title", to: "lists#search"
   resources :lists
   resources :lists_words
