@@ -5,7 +5,10 @@ class List < ActiveRecord::Base
   # def add(word)
   #   self.words << word
   # end
-
+  # def self.search(search)
+  #   search_condition = "%" + search + "%"
+  #   find(:all, :conditions => ['title LIKE ?', search_condition, search_condition])
+  # end
 end
 
 

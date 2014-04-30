@@ -27,6 +27,9 @@ class ListsController < ApplicationController
 
   end
 
+  def search
+     @lists = List.where(:title => params[:search])
+  end
 
   private
   def list_params
