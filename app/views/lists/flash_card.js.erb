@@ -12,7 +12,7 @@ var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
   $('#container').append(pauseButton);
   pauseButton.click(function(){
     alert("pause test");
-}); 
+});
 
 
 function getWordsFromRuby() {
@@ -39,7 +39,7 @@ function returnNewWord(){
       storeAnswer(numberCorrect)
 
     } else {
-    return wordList.pop(); 
+    return wordList.pop();
     }
 
 };
@@ -47,23 +47,26 @@ function returnNewWord(){
 
 
 function submitAnswer(numberCorrect){
-  
+
   storeAnswer(numberCorrect);
   var newWord = returnNewWord();
   refreshFlashCard(newWord);
-  
+
 };
 
 function refreshFlashCard(newWord){
 
   console.log(newWord);
   var flashCard = $("<div class='flashCard'></div>");
-  var kanji = newWord.kanji;
+  var kanji = newWord.kanji || " ";
   var kana = newWord.kana;
   var english = newWord.english;
 
 
+
   flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
+
+
   flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
   flashCard.append("<p id = 'englishAnswer'>" + english + "</p>");
 
@@ -82,7 +85,7 @@ function refreshFlashCard(newWord){
 
   var realAnswer= currentUserGotRight;
 
-  
+
 
   passButton.click(function(){
 
@@ -90,7 +93,7 @@ function refreshFlashCard(newWord){
      console.log(currentUserGotWrong);
      currentUserGotWrong = parseInt(currentUserGotWrong);
      return (currentUserGotWrong --);
-    }  
+    }
 
     function addWordToEndOfList(newWord){
       wordList.push(newWord)
@@ -103,12 +106,12 @@ function refreshFlashCard(newWord){
 
 
   newAnswerButton.click(function() {
-    
+
     function updateCurrentUserGotRight() {
      console.log(currentUserGotRight);
      currentUserGotRight = parseInt(currentUserGotRight);
      currentUserGotRight ++;
-    }   
+    }
 
     updateCurrentUserGotRight();
     submitAnswer(realAnswer);
@@ -120,13 +123,13 @@ function refreshFlashCard(newWord){
 };
 
 function storeAnswer(numberCorrect){
-  var userAnswer = $('#flashCardInputBox').val(); 
-  
+  var userAnswer = $('#flashCardInputBox').val();
+
     $.ajax({
       url: '/users/<%=@user.id%>/update_score',
       method: 'post',
       data: {
-        got_right: 1 
+        got_right: 1
       },
       dataType: 'json'
     }).done(function(data){
