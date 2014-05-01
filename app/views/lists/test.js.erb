@@ -68,9 +68,12 @@ console.log(newWord);
 var flashCard = $("<div class='flashCard'></div>");
 var kanji = newWord.kanji;
 var kana = newWord.kana;
+var english = newWord.english;
 
 flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
 flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
+var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
+
 
 var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
 flashCardInputBox.appendTo(flashCard);
@@ -80,6 +83,13 @@ newAnswerButton.appendTo(flashCard);
 
 console.log(kanji);
 flashCard.appendTo('#container');
+
+
+var realAnswer= englishAnswer.text();
+
+newAnswerButton.click(function() {
+      submitAnswer(realAnswer);
+  });
 
 }
 
