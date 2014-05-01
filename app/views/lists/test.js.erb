@@ -84,10 +84,11 @@ flashCard.appendTo('#container');
 
 var realAnswer= englishAnswer.text();
 
-determineAnswerCorrectness(realAnswer);
+
 
 newAnswerButton.click(function() {
       submitAnswer(realAnswer);
+      determineAnswerCorrectness(realAnswer);
   });
 
 };
@@ -136,12 +137,17 @@ function makeTestResultsAppear() {
 
 function determineAnswerCorrectness(realAnswer) {
   var userAnswer = ($('#flashCardInputBox').val());
-  if (realAnswer == userAnswer) {
+  splitRealAnswer = realAnswer.split(" ");
+
+  console.log(splitRealAnswer);
+
+  if (_.contains(splitRealAnswer, userAnswer)) {
     $('.flashCard').css('background-color', 'green')
   } else {
     $('.flashCard').css('background-color', 'red')
   }
   console.log(realAnswer);
+  console.log(userAnswer);
 }
 
 
