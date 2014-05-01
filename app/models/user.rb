@@ -7,14 +7,15 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true
   has_many :inverse_friends, through: :inverse_friendships, :source => :user,  :uniq => true
 
-  validates :name, :email, :password, :password_confirmation,  presence: true
+  validates :name, :email,  presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def find_friend
-
+  def self.all_except(user)
+    where.not(id: user)
   end
+
 
   def total_practiced
     return self.got_right + self.got_wrong
@@ -28,9 +29,6 @@ class User < ActiveRecord::Base
     return "Words practiced: #{self.total_practiced}. Batting average: #{self.batting_average}."
   end
 
-  def self.all_except(user)
-  where.not(id: user)
-  end
 
   # badge functions
 

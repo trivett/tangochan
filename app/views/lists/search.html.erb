@@ -1,1 +1,5 @@
-<%= render "search_results" %>
+<% if @lists.count == 0 %>
+  <p>Sorry, no results match your search.</p>
+<% else %>
+  <%= render "search_results" %>
+<% end %>

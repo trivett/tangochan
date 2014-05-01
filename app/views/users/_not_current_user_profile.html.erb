@@ -1,13 +1,7 @@
-
 <section id="user-profile">
 
 
-
-
-
-
-  </h3>
-  <img src="<%= @user.image_url %>">
+  <img src="<%= @user.image_url %>" id="user_image">
 
   <hr>
 
@@ -27,18 +21,4 @@
   <p><strong>Batting average:</strong> <%= @user.words_practiced %></p>
 </section>
 
-<section id="user-actions">
-    <h3>Lists:</h3>
-    <ul id="users-lists">
-    <% @lists.each do |list| %>
-      <li><%= link_to list.title, list_path(list) %></li>
-    <% end %>
-    </ul>
-
-    <h3>Badges:</h3> 
-    <p id="users-badges">
-    <% @badges.each do |badge| %>
-      <p><img src="<%= badge.image_url %>"></p>
-    <% end %>
-
-</section>
+<%= render "user_actions" %>
