@@ -1,8 +1,7 @@
 <%= render "search" %>
 <hr>
 <ul>
-  <% @list_name = @users.each {|user| user.id}  %>
-  <%= @lol %>
+
   <% @lists.each do |list| %>
     <li><%= link_to "#{list.title}", list %> -  <%= list.words.count %> words - Created at <%= list.created_at.strftime("%I:%M%p on %m/%d/%Y") %> by <%= list.user_id %></li>
 
