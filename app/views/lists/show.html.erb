@@ -25,5 +25,6 @@
 
   </ul>
 </div>
-<%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
-
+<% if @list.category == nil %>
+  <%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
+<% end %>

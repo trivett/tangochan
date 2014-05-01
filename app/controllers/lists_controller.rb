@@ -55,8 +55,9 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
-
-    @list.destroy
+    if @list.category == nil
+      @list.destroy
+    end
     redirect_to user_path(current_user)
   end
 
