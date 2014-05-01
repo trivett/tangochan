@@ -24,12 +24,15 @@
     </ul>
 
   </ul>
-  </section>
+</section>
+  <div class="button-group right">
+  <% if current_user && @list.user_id != current_user.id %>
+    <%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
+  <% end %>
+  <% if @list.category == nil %>
+    <%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
+  <% end %>
+  </div>
 </div>
 
-<% if current_user && @list.user_id != current_user.id %>
-  <%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
-<% end %>
-<% if @list.category == nil %>
-  <%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
-<% end %>
+

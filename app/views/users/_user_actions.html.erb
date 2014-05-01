@@ -14,7 +14,9 @@
       <li><%= link_to list.title, list_path(list) %></li>
     <% end %>
     </ul>
+      <p><%= link_to "Lists by category", "/categories" %></p>
     <%= render "/lists/search" %>
+    <p><%= link_to "All lists", lists_path %></p>
 
     <h3>My Badges:</h3>
     <!-- <p id="users-badges"> -->
