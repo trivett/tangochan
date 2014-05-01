@@ -54,7 +54,7 @@ function submitAnswer(realAnswer){
   storeAnswer(realAnswer);
   var newWord = returnNewWord();
   refreshFlashcard(newWord);
-
+  
 };
 
 
@@ -84,7 +84,7 @@ flashCard.appendTo('#container');
 
 var realAnswer= englishAnswer.text();
 
-determineAnswerCorrectness();
+determineAnswerCorrectness(realAnswer);
 
 newAnswerButton.click(function() {
       submitAnswer(realAnswer);
@@ -134,10 +134,23 @@ function makeTestResultsAppear() {
   testResults.appendTo('#container');
 }
 
-function determineAnswerCorrectness() {
-  alert($('#flashCardInputBox').val());
-  
+function determineAnswerCorrectness(realAnswer) {
+  var userAnswer = ($('#flashCardInputBox').val());
+  if (realAnswer == userAnswer) {
+    $('.flashCard').css('background-color', 'green')
+  } else {
+    $('.flashCard').css('background-color', 'red')
+  }
+  console.log(realAnswer);
 }
 
 
+
+
+
 startTest();
+
+
+
+
+
