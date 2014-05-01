@@ -41,7 +41,7 @@ class WordsController < ApplicationController
   def tweet
     @word = params[:term]
     respond_to do |format|
-      format.js {}
+      format.js {}P
     end
   end
 
