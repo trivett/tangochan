@@ -37,6 +37,16 @@ class ListsController < ApplicationController
     end
   end
 
+  def flash_card
+    @list = List.find(params[:id])
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
+
   def search
 
      @lists = List.where(:title => params[:search])
