@@ -9,6 +9,8 @@
   <%= submit_tag("Search", class: "button") %>
 <% end %>
 
+<%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
+
 <div id="word-results"></div>
 
 <div id="list-words-display">

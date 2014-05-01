@@ -2,10 +2,11 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+    @users = User.all
+
   end
 
   def show
-
     @list = List.find(params[:id])
 
     # @word = Word.find(params)
@@ -14,6 +15,7 @@ class ListsController < ApplicationController
       format.js { }
       format.json { render json: @list.words }
     end
+
   end
 
   def new
@@ -27,6 +29,24 @@ class ListsController < ApplicationController
     list_id = @list.id
     redirect_to list_path(list_id)
   end
+
+
+  def save_list
+
+    @user = current_user.id
+    @user_list = current_user.lists
+    @list = List.find(params[:id])
+    @list.dup.save
+    @user_list << @list
+
+    redirect_to '/'
+    # response.cache_control.replace(:no_cache => true)
+
+    # respond_to do |format|
+    #   format.js { }
+    # end
+  end
+
 
   def test
     @list = List.find(params[:id])
