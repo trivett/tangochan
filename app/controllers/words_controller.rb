@@ -48,8 +48,9 @@ class WordsController < ApplicationController
   def remove_from_list
     @word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
-    @list.words.delete(@word)
-
+    if @list.category == nil
+      @list.words.delete(@word)
+    end
     respond_to do |format|
       format.js {}
     end
