@@ -58,6 +58,7 @@ class ListsController < ApplicationController
 
   def flash_card
     @list = List.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       format.html {}
