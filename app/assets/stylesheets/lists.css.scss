@@ -38,11 +38,13 @@
   float: left;
   max-height: inherit;
   padding-left: 30px;
+  display: block;
 }
 
 .word-buttons{
-  // float: right;
-  // display: block;
+  display: block;
+  // float: left;
+  width: 100px;
 
 }
 
