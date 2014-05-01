@@ -1,9 +1,7 @@
 <%= link_to "Flash Card", "/lists/#{@list.id}/flash_card", :method => :get, :class => 'button'  %>
 <%= link_to "Test List", "/lists/#{@list.id}/test", :method => :get, :class => 'button'  %>
 
-
-
-<h2><%= @list.title %></h2>
+<h2><%= @list.title %> by <%= @list.user_name %> </h2>
 
 <%= form_tag("/words/search", method: "get", remote: true) do %>
   <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
@@ -13,6 +11,7 @@
 <% end %>
 
 <div id="word-results" class="large-12 columns"></div>
+
 
 <div id="list-words-display" class="large-12 columns">
   <h2>Words in <%= @list.title %></h2>
