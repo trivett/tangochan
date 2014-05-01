@@ -11,10 +11,10 @@
   <% end %>
 <% end %>
 
-<div id="word-results" class="large-12 columns"></div>
+<section id="word-results" class="large-12 columns"></section>
 
 
-<div id="list-words-display" class="large-12 columns">
+<section id="list-words-display" class="large-12 columns">
   <h2>Words in <%= @list.title %></h2>
   <ul>
 
@@ -24,6 +24,7 @@
     </ul>
 
   </ul>
+  </section>
 </div>
 
 <% if current_user && @list.user_id != current_user.id %>
