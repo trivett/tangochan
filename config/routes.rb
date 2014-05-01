@@ -19,6 +19,7 @@ Tangochan::Application.routes.draw do
   post "/add_to_list", to: "words#add_to_list"
   resources :categories
   get "/lists/:id/test", to: "lists#test"
+  post "/lists/:id/test", to: "lists#test"
   root 'welcome#index'
 
 end
