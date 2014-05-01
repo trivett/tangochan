@@ -1,19 +1,20 @@
 <%= link_to "Flash Card", "/lists/#{@list.id}/flash_card", :method => :get, :class => 'button'  %>
 <%= link_to "Test List", "/lists/#{@list.id}/test", :method => :get, :class => 'button'  %>
+<% if @list.category == nil %>
+<h2><%= @list.title %> by <%= @list.user_name %></h2>
 
-<h2><%= @list.title %> by <%= @list.user_name %> </h2>
-
-<%= form_tag("/words/search", method: "get", remote: true) do %>
-  <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
-  <%= text_field_tag(:term) %>
-  <%= hidden_field_tag :list, @list.id %>
-  <%= submit_tag("Search", class: "button") %>
+  <%= form_tag("/words/search", method: "get", remote: true) do %>
+    <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
+    <%= text_field_tag(:term) %>
+    <%= hidden_field_tag :list, @list.id %>
+    <%= submit_tag("Search", class: "button") %>
+  <% end %>
 <% end %>
 
-<div id="word-results" class="large-12 columns"></div>
+<section id="word-results" class="large-12 columns"></section>
 
 
-<div id="list-words-display" class="large-12 columns">
+<section id="list-words-display" class="large-12 columns">
   <h2>Words in <%= @list.title %></h2>
   <ul>
 
@@ -23,11 +24,18 @@
     </ul>
 
   </ul>
-</div>
+</section>
 
-<% if @list.user_id != current_user.id %>
-  <%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
-<% end %>
-<% if @list.category == nil %>
-  <%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
-<% end %>
+
+</div>
+  <section class="button-group right">
+  <% if current_user && @list.user_id != current_user.id %>
+    <%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
+  <% end %>
+  <% if @list.category == nil %>
+    <%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
+  <% end %>
+  </section>
+
+
+

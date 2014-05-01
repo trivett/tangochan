@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <%= favicon_link_tag 'favicon (2).ico' %>
     <title><%= content_for?(:title) ? yield(:title) : "TangoChan - Smart and Fun Language Learning" %></title>
 
     <%= stylesheet_link_tag    "application" %>
@@ -12,9 +12,7 @@
   </head>
 
   <body>
-  <div id="container">
-
-
+<div id="container">
   <header class="row">
     <div class="large-3 columns">
       <h1><%= link_to image_tag("logo.png"), root_path %></h1>
@@ -23,27 +21,23 @@
     <div class="large-9 columns">
       <ul class="button-group right">
         <% if user_signed_in? %>
-       <span id="whoami">Signed in as<%= link_to " #{current_user.name}", user_path(current_user)  %></span>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %>
-    <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'button'  %>
-        <%= link_to "Login", new_user_session_path, :class => 'button',  :"data-reveal-id" => "login-form" %>
-    <% end %>
-    </li>
-
+          <span id="whoami">Signed in as<%= link_to " #{current_user.name}", user_path(current_user)  %></span>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'button'  %>
+          <%= link_to "Login", new_user_session_path, :class => 'button',  :"data-reveal-id" => "login-form" %>
+         <% end %>
       </ul>
     </div>
-
-
-
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-
   </header>
+
+
     <%= yield %>
 
 

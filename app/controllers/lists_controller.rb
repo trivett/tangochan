@@ -30,13 +30,22 @@ class ListsController < ApplicationController
   end
 
 
+
+
   def save_list
-    @user = current_user.id
+    @user = current_user
     @user_list = current_user.lists
     @list = List.find(params[:id])
 
-    @list.dup.save
-    @user_list << @list
+    @new_list = @list.dup
+    @new_list.category = nil
+    @new_list.words << @list.words
+    @new_list.save
+    @user_list << @new_list
+
+
+
+
 
     redirect_to '/'
     # response.cache_control.replace(:no_cache => true)
