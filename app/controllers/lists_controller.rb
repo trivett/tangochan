@@ -45,7 +45,7 @@ class ListsController < ApplicationController
 
 
   def categories
-    @categories = List.where(:category => true)
+    @categories = List.where.not(:category => nil)
   end
 
   private
