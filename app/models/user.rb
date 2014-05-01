@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
     if num > 50
       self.badges << (Badge.where(:name => "Fifty Words"))
     end
+
   end
     # elsif self.words_practiced > 50 && self.words_practiced < 100
     #     self.badges << (Badge.where(:name => "Fifty Words"))

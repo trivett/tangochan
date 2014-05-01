@@ -5,10 +5,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user
+      current_user.words_badges
+    end
     @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])
    @list = List.new
    @words_practiced = current_user.got_right.to_s
-    current_user.words_badges
     if params[:id] == current_user.id
       @user = current_user
       @user.word_badges
