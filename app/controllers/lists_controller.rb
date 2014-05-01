@@ -49,7 +49,8 @@ class ListsController < ApplicationController
 
   def test
     @list = List.find(params[:id])
-
+    @user = current_user
+    
     respond_to do |format|
       format.html {}
       format.js {}

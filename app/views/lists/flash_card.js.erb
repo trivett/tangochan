@@ -1,17 +1,15 @@
 var wordList = getWordsFromRuby();
+wordList = _.shuffle(wordList);
 var firstWord = _.first(wordList);
-
-
-refreshFlashCard(firstWord);
-
-
+var currentUserGotRight = "<%=@user.got_right%>";
+var currentUserGotWrong = "<%=@user.got_wrong%>";
 
 var startButton = $('#startFlashCardButton');
 startButton.fadeOut(50);
 
 var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
   pauseButton.fadeIn(300);
-  pauseButton.appendTo('#container');
+  $('#container').append(pauseButton);
   pauseButton.click(function(){
     alert("pause test");
 }); 
@@ -36,13 +34,10 @@ function getWordsFromRuby() {
 
 function returnNewWord(){
 
-  
-    console.log(wordList.length);
-
     if (wordList.length == 0) {
       makeTestResultsAppear();
+
     } else {
-    wordList = _.shuffle(wordList);
     return wordList.pop(); 
     }
 
@@ -60,36 +55,59 @@ function submitAnswer(realAnswer){
 
 function refreshFlashCard(newWord){
 
-console.log(newWord);
-var flashCard = $("<div class='flashCard'></div>");
-var kanji = newWord.kanji;
-var kana = newWord.kana;
-var english = newWord.english;
+  console.log(newWord);
+  var flashCard = $("<div class='flashCard'></div>");
+  var kanji = newWord.kanji;
+  var kana = newWord.kana;
+  var english = newWord.english;
 
 
-flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
-flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
-flashCard.append("<p id = 'englishAnswer'>" + english + "</p>");
+  flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
+  flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
+  flashCard.append("<p id = 'englishAnswer'>" + english + "</p>");
 
-var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
+  var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
 
-var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
-newAnswerButton.appendTo(flashCard);
+  var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
+  newAnswerButton.appendTo(flashCard);
 
-var passButton = $("<button id = 'passButton'>Pass</button>");
-passButton.appendTo(flashCard);
+  var passButton = $("<button id = 'passButton'>Pass</button>");
+  passButton.appendTo(flashCard);
 
-console.log(kanji);
-flashCard.fadeIn(500);
-flashCard.appendTo('#container');
-
-
-var realAnswer= englishAnswer.text();
+  console.log(kanji);
+  flashCard.fadeIn(500);
+  flashCard.appendTo('#container');
 
 
-newAnswerButton.click(function() {
+  var realAnswer= englishAnswer.text();
+
+  
+
+  passButton.click(function(){
+
+    function addWordToEndOfList(newWord){
+      wordList.push(newWord)
+    };
+
+    submitAnswer(realAnswer);
+    addWordToEndOfList(newWord);
+  });
+
+
+  newAnswerButton.click(function() {
+    
+      function updateCurrentUserGotRight() {
+       console.log(currentUserGotRight);
+       currentUserGotRight = parseInt(currentUserGotRight);
+       currentUserGotRight ++;
+      }   
+
+      updateCurrentUserGotRight();
       submitAnswer(realAnswer);
   });
+
+
+
 
 };
 
@@ -116,6 +134,8 @@ function storeAnswer(realAnswer){
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
   var finishedButton = $('<%= link_to "Finished!", "/lists/#{@list.id}", :method => :get, :class => 'button'  %>')
+  var gotRight = $('<p id = "gotRightResults">' + "You got " + currentUserGotRight + " words correct!!" + '</p>');
+  gotRight.appendTo(testResults);
   finishedButton.appendTo(testResults);
   testResults.appendTo('#container');
 
@@ -126,5 +146,5 @@ function makeTestResultsAppear() {
 
 
 
-
+refreshFlashCard(firstWord);
 
