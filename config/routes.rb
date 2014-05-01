@@ -18,8 +18,10 @@ Tangochan::Application.routes.draw do
   end
   get "/lists/:id/save_list", to: "lists#save_list"
   post "/add_to_list", to: "words#add_to_list"
-  resources :categories
+  # resources :categories
+  get "/categories", to: "lists#categories"
   get "/lists/:id/test", to: "lists#test"
+  get "/lists/:id/flash_card", to: "lists#flash_card"
   post "/lists/:id/test", to: "lists#test"
   root 'welcome#index'
 

@@ -1,6 +1,7 @@
 var wordList;
 
-var startButton = $('#startTestButton');
+
+var startButton = $('#startFlashCardButton');
   startButton.fadeOut(50);
 
 var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
@@ -10,6 +11,8 @@ var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
     alert("pause test");
   }); 
 
+
+
 function startTest(){
   wordList = getWordsFromRuby();
   var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
@@ -18,14 +21,12 @@ function startTest(){
   flashCard.fadeIn(500);
   flashCard.appendTo('#container');
 
-  var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
-  flashCardInputBox.appendTo(flashCard);
-
-  var submitAnswerButton = $("<button id = 'submitAnswerButton'>Submit Answer</button>");
+  var submitAnswerButton = $("<button id = 'submitAnswerButton'>Next</button>");
   submitAnswerButton.appendTo(flashCard);
 
   submitAnswerButton.click(function() {
       submitAnswer(realAnswer);
+
   });
 
 
@@ -71,11 +72,7 @@ flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
 
 var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
 
-
-var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
-flashCardInputBox.appendTo(flashCard);
-
-var newAnswerButton = $("<button id = 'newAnswerButton'>Submit Answer</button>");
+var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
 newAnswerButton.appendTo(flashCard);
 
 console.log(kanji);
@@ -88,7 +85,6 @@ var realAnswer= englishAnswer.text();
 
 newAnswerButton.click(function() {
       submitAnswer(realAnswer);
-      determineAnswerCorrectness(realAnswer);
   });
 
 };
@@ -132,23 +128,15 @@ function storeAnswer(realAnswer){
 
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
+  var finishedButton = $('<%= link_to "Finished!", "/lists/#{@list.id}", :method => :get, :class => 'button'  %>')
+  finishedButton.appendTo(testResults);
   testResults.appendTo('#container');
+
 }
 
-function determineAnswerCorrectness(realAnswer) {
-  var userAnswer = ($('#flashCardInputBox').val());
-  splitRealAnswer = realAnswer.split(" ");
 
-  console.log(splitRealAnswer);
 
-  if (_.contains(splitRealAnswer, userAnswer)) {
-    $('.flashCard').css('background-color', 'green')
-  } else {
-    $('.flashCard').css('background-color', 'red')
-  }
-  console.log(realAnswer);
-  console.log(userAnswer);
-}
+
 
 
 

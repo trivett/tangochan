@@ -1,7 +1,8 @@
 
   <div class="row" id="hero">
     <div class="large-12 columns" id="hero">
-        <h2>The fun way to learn Japanese</h2>
+        <!-- <h2>The fun way to learn Japanese</h2> -->
+      <%= image_tag ("hero.jpg") %>
     </div>
     <hr>
   </div>
@@ -36,7 +37,7 @@
         <div class="large-6 columns">
           <p>Win badges for reaching milestones and completing our vocabulary challenges.</p>
 
-          <p><%= link_to "Try a category to practice", categories_path %></p>
+          <p><%= link_to "Try a category to practice", "/categories" %></p>
         </div>
         <div class="large-6 columns">
           <%= image_tag ("hundred.png"), :id => "badge-example" %>

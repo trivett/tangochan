@@ -56,10 +56,33 @@ class ListsController < ApplicationController
     end
   end
 
+  def flash_card
+    @list = List.find(params[:id])
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
+
   def search
 
      @lists = List.where(:title => params[:search])
 
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    if @list.category == nil
+      @list.destroy
+    end
+    redirect_to user_path(current_user)
+  end
+
+
+  def categories
+    @categories = List.where.not(:category => nil)
   end
 
   private
