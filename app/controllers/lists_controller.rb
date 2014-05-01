@@ -24,17 +24,17 @@ class ListsController < ApplicationController
 
   def create
     @user = current_user
-    @list = List.create(title: params[:list][:title], user_id: @user.id)
+    @list = List.create(title: params[:list][:title], user_id: @user.id, user_name: @user.name)
     list_id = @list.id
     redirect_to list_path(list_id)
   end
 
 
   def save_list
-
     @user = current_user.id
     @user_list = current_user.lists
     @list = List.find(params[:id])
+
     @list.dup.save
     @user_list << @list
 
@@ -58,6 +58,7 @@ class ListsController < ApplicationController
 
   def flash_card
     @list = List.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       format.html {}

@@ -1,36 +1,21 @@
-var wordList;
+var wordList = getWordsFromRuby();
+var firstWord = _.first(wordList);
+
+
+refreshFlashCard(firstWord);
+
 
 
 var startButton = $('#startFlashCardButton');
-  startButton.fadeOut(50);
+startButton.fadeOut(50);
 
 var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
   pauseButton.fadeIn(300);
   pauseButton.appendTo('#container');
   pauseButton.click(function(){
     alert("pause test");
-  }); 
+}); 
 
-
-
-function startTest(){
-  wordList = getWordsFromRuby();
-  var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
-  var englishAnswer = $("<div id = 'englishAnswer'><%=@list.words[0].english%></div>");
-  var realAnswer= englishAnswer.text();
-  flashCard.fadeIn(500);
-  flashCard.appendTo('#container');
-
-  var submitAnswerButton = $("<button id = 'submitAnswerButton'>Next</button>");
-  submitAnswerButton.appendTo(flashCard);
-
-  submitAnswerButton.click(function() {
-      submitAnswer(realAnswer);
-
-  });
-
-
-};
 
 function getWordsFromRuby() {
   var _wordsList;
@@ -46,52 +31,11 @@ function getWordsFromRuby() {
   })
 
   return _wordsList;
-
 };
-
-
-function submitAnswer(realAnswer){
-  
-  storeAnswer(realAnswer);
-  var newWord = returnNewWord();
-  refreshFlashcard(newWord);
-  
-};
-
-
-function refreshFlashcard(newWord){
-
-console.log(newWord);
-var flashCard = $("<div class='flashCard'></div>");
-var kanji = newWord.kanji;
-var kana = newWord.kana;
-var english = newWord.english;
-
-flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
-flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
-
-var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
-
-var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
-newAnswerButton.appendTo(flashCard);
-
-console.log(kanji);
-flashCard.appendTo('#container');
-
-
-var realAnswer= englishAnswer.text();
-
-
-
-newAnswerButton.click(function() {
-      submitAnswer(realAnswer);
-  });
-
-};
-
 
 
 function returnNewWord(){
+
   
     console.log(wordList.length);
 
@@ -105,6 +49,49 @@ function returnNewWord(){
 };
 
 
+
+function submitAnswer(realAnswer){
+  
+  storeAnswer(realAnswer);
+  var newWord = returnNewWord();
+  refreshFlashCard(newWord);
+  
+};
+
+function refreshFlashCard(newWord){
+
+console.log(newWord);
+var flashCard = $("<div class='flashCard'></div>");
+var kanji = newWord.kanji;
+var kana = newWord.kana;
+var english = newWord.english;
+
+
+flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
+flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
+flashCard.append("<p id = 'englishAnswer'>" + english + "</p>");
+
+var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
+
+var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
+newAnswerButton.appendTo(flashCard);
+
+var passButton = $("<button id = 'passButton'>Pass</button>");
+passButton.appendTo(flashCard);
+
+console.log(kanji);
+flashCard.fadeIn(500);
+flashCard.appendTo('#container');
+
+
+var realAnswer= englishAnswer.text();
+
+
+newAnswerButton.click(function() {
+      submitAnswer(realAnswer);
+  });
+
+};
 
 function storeAnswer(realAnswer){
   var userAnswer = $('#flashCardInputBox').val(); 
@@ -136,13 +123,6 @@ function makeTestResultsAppear() {
 
 
 
-
-
-
-
-
-
-startTest();
 
 
 
