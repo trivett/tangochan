@@ -8,12 +8,15 @@ class UsersController < ApplicationController
     @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])
    @list = List.new
    @words_practiced = current_user.got_right.to_s
+    current_user.words_badges
     if params[:id] == current_user.id
-       @badges = current_user.badges
-       @users = User.all_except(current_user)
-       @user = current_user
-       @user_page = User.find(params[:id])
-       @lists = List.where(:user_id => current_user.id)
+      @user = current_user
+      @user.word_badges
+
+      @badges = current_user.badges
+      @users = User.all_except(current_user)
+      @user_page = User.find(params[:id])
+      @lists = List.where(:user_id => current_user.id)
     else
        @badges = User.find(params[:id]).badges
        @users = User.all_except(current_user)
