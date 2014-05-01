@@ -1,16 +1,19 @@
 console.log("workinggggggggggg");
 
+var wordList;
+
 var startButton = $('#startTestButton');
   startButton.fadeOut(50);
 
 var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
   pauseButton.fadeIn(300);
-  pauseButton.appendTo('#container'); 
-
-
+  pauseButton.appendTo('#container');
+  pauseButton.click(function(){
+    alert("pause test");
+  }); 
 
 function startTest(){
-
+  wordList = secondHackedSolutionToGetWordsFromRuby();
   var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
   var englishAnswer = $("<div id = 'englishAnswer'><%=@list.words[0].english%></div>");
   var realAnswer= englishAnswer.text();
@@ -23,59 +26,92 @@ function startTest(){
   var submitAnswerButton = $("<button id = 'submitAnswerButton'>Submit Answer</button>");
   submitAnswerButton.appendTo(flashCard);
 
-  pauseButton.click(pauseTest);
+  
   submitAnswerButton.click(function() {
-    submitAnswer(realAnswer);
+      submitAnswer(realAnswer);
   });
 
- 
-  
-}
+   console.log(wordList[i]);
 
+};
 
-function pauseTest(){
-  alert("pause test");
-}
-
-function submitAnswer(realAnswer){
-  var flashCard = $(".flashCard");
-  
-  
-  
-
-  storeAnswers(realAnswer);
-  startTest();
-}
-
-function storeAnswers(realAnswer){
-  var userAnswer = $('#flashCardInputBox').val(); //this works
-  var actualAnswer = ($('#englishAnswer').text()); //this is actually where I want to reference the english word
-
-console.log(realAnswer);
+function secondHackedSolutionToGetWordsFromRuby() {
+  var _wordsList;
 
   $.ajax({
-    url: '/lists/<%=@list.id%>/test',
-    method: 'post',
-    data: {
-      flashCardInput: userAnswer, //where is this actually posting to
-      flashCardAnswer: actualAnswer
-    },
-    dataType: 'json'
-  }).done(function(data){
-    console.log(data);
-  });
+    url: '/lists/<%=@list.id%>',
+    method: 'get',
+    dataType: 'json',
+    async: false,
+    success: function(data){
+      _wordsList = data;
+    }
+  })
 
-  var flashCard = $(".flashCard");
-  flashCard.hide();
+  return _wordsList;
+
+};
+
+
+function submitAnswer(realAnswer){
+  
+  storeAnswer(realAnswer);
+  var newWord = returnNewWord();
+  refreshFlashcard(newWord);
+
+};
+
+
+function refreshFlashcard(newWord){
+
+console.log(newWord);
+var flashCard = $("<div class='flashCard'></div>");
+var kanji = newWord.kanji;
+var kana = newWord.kana;
+
+flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
+flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
+
+var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
+flashCardInputBox.appendTo(flashCard);
+
+var newAnswerButton = $("<button id = 'newAnswerButton'>Submit Answer</button>");
+newAnswerButton.appendTo(flashCard);
+
+console.log(kanji);
+flashCard.appendTo('#container');
+
+}
+
+
+
+function returnNewWord(){
+  _.shuffle(wordList);
+  return wordList.pop();
 }
 
 
 
 
 
+function storeAnswer(realAnswer){
+  var userAnswer = $('#flashCardInputBox').val(); 
+  
+    $.ajax({
+      url: '/lists/<%=@list.id%>/test',
+      method: 'post',
+      data: {
+        flashCardInput: userAnswer, 
+        flashCardAnswer: realAnswer
+      },
+      dataType: 'json'
+    }).done(function(data){
+      console.log(data);
+    });
 
-
-
+    var flashCard = $(".flashCard");
+    flashCard.hide();
+};
 
 
 startTest();

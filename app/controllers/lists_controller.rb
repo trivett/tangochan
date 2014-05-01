@@ -3,10 +3,12 @@ class ListsController < ApplicationController
   def show
 
     @list = List.find(params[:id])
+
     # @word = Word.find(params)
     respond_to do |format|
       format.html { }
       format.js { }
+      format.json { render json: @list.words }
     end
   end
 
@@ -24,6 +26,7 @@ class ListsController < ApplicationController
 
   def test
     @list = List.find(params[:id])
+
     respond_to do |format|
       format.html {}
       format.js {}
@@ -32,7 +35,6 @@ class ListsController < ApplicationController
   
   def search
      @lists = List.where(:title => params[:search])
-                     #  "title like ?", "%#{query}%
   end
 
   private
