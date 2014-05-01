@@ -48,6 +48,11 @@ class ListsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+
+  def categories
+    @categories = List.where(:category => true)
+  end
+
   private
   def list_params
     params.require(:list).permit(:title)

@@ -1,15 +1,7 @@
 require 'csv'
 
-Category.delete_all
 Word.delete_all
 Badge.delete_all
-
-number_category = Category.create(name: "Numbers")
-food_category = Category.create(name: "Foods")
-greeting_category = Category.create(name: "Greetings")
-place_name_category = Category.create(name: "Place Names")
-business_terms_category = Category.create(name: "Business Terms")
-slang_category = Category.create(name: "Slang")
 
 
 
