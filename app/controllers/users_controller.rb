@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])
    @list = List.new
-
+   @words_practiced = current_user.got_right.to_s
     if params[:id] == current_user.id
        @badges = current_user.badges
        @users = User.all_except(current_user)
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
        @user = User.find(params[:id])
        @lists = List.where(:user_id => params[:id])
     end
+
   end
 
   def search
@@ -35,6 +36,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update_score
+
+    @user = User.find(params[:id])
+    @user.got_right += params[:got_right].to_i
+    @user.save
+      respond_to do |format|
+        format.js {}
+        # format.json { render json: data.to_json }
+    end
+  end
 
 
 end

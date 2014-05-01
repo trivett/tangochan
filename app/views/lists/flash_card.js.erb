@@ -36,6 +36,7 @@ function returnNewWord(){
 
     if (wordList.length == 0) {
       makeTestResultsAppear();
+      storeAnswer(numberCorrect)
 
     } else {
     return wordList.pop(); 
@@ -45,9 +46,9 @@ function returnNewWord(){
 
 
 
-function submitAnswer(realAnswer){
+function submitAnswer(numberCorrect){
   
-  storeAnswer(realAnswer);
+  storeAnswer(numberCorrect);
   var newWord = returnNewWord();
   refreshFlashCard(newWord);
   
@@ -79,11 +80,17 @@ function refreshFlashCard(newWord){
   flashCard.appendTo('#container');
 
 
-  var realAnswer= englishAnswer.text();
+  var realAnswer= currentUserGotRight;
 
   
 
   passButton.click(function(){
+
+    function updateCurrentUserGotWrong() {
+     console.log(currentUserGotWrong);
+     currentUserGotWrong = parseInt(currentUserGotWrong);
+     return (currentUserGotWrong --);
+    }  
 
     function addWordToEndOfList(newWord){
       wordList.push(newWord)
@@ -91,19 +98,20 @@ function refreshFlashCard(newWord){
 
     submitAnswer(realAnswer);
     addWordToEndOfList(newWord);
+    updateCurrentUserGotWrong();
   });
 
 
   newAnswerButton.click(function() {
     
-      function updateCurrentUserGotRight() {
-       console.log(currentUserGotRight);
-       currentUserGotRight = parseInt(currentUserGotRight);
-       currentUserGotRight ++;
-      }   
+    function updateCurrentUserGotRight() {
+     console.log(currentUserGotRight);
+     currentUserGotRight = parseInt(currentUserGotRight);
+     currentUserGotRight ++;
+    }   
 
-      updateCurrentUserGotRight();
-      submitAnswer(realAnswer);
+    updateCurrentUserGotRight();
+    submitAnswer(realAnswer);
   });
 
 
@@ -111,15 +119,14 @@ function refreshFlashCard(newWord){
 
 };
 
-function storeAnswer(realAnswer){
+function storeAnswer(numberCorrect){
   var userAnswer = $('#flashCardInputBox').val(); 
   
     $.ajax({
-      url: '/lists/<%=@list.id%>/test',
+      url: '/users/<%=@user.id%>/update_score',
       method: 'post',
       data: {
-        flashCardInput: userAnswer, 
-        flashCardAnswer: realAnswer
+        got_right: 1 
       },
       dataType: 'json'
     }).done(function(data){
@@ -134,12 +141,14 @@ function storeAnswer(realAnswer){
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
   var finishedButton = $('<%= link_to "Finished!", "/lists/#{@list.id}", :method => :get, :class => 'button'  %>')
-  var gotRight = $('<p id = "gotRightResults">' + "You got " + currentUserGotRight + " words correct!!" + '</p>');
+  var gotRight = $('<p id = "gotRightResults">' + "You got a grand total of " + currentUserGotRight + " words correct since you started TangoChan. Keep it up!" + '</p>');
   gotRight.appendTo(testResults);
   finishedButton.appendTo(testResults);
   testResults.appendTo('#container');
 
 }
+
+
 
 
 

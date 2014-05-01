@@ -23,6 +23,7 @@ Tangochan::Application.routes.draw do
   get "/lists/:id/test", to: "lists#test"
   get "/lists/:id/flash_card", to: "lists#flash_card"
   post "/lists/:id/test", to: "lists#test"
+  post "/users/:id/update_score", to: "users#update_score"
   root 'welcome#index'
 
 end
