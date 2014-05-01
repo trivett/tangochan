@@ -4,7 +4,9 @@ class List < ActiveRecord::Base
 
 
 
-
+  def strip_category
+    self.category = nil
+  end
 
 end
 

@@ -25,7 +25,7 @@
   </ul>
 </div>
 
-<% if @list.user_id != current_user.id %>
+<% if current_user && @list.user_id != current_user.id %>
   <%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
 <% end %>
 <% if @list.category == nil %>
