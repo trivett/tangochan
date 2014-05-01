@@ -1,13 +1,14 @@
 <%= link_to "Flash Card", "/lists/#{@list.id}/flash_card", :method => :get, :class => 'button'  %>
 <%= link_to "Test List", "/lists/#{@list.id}/test", :method => :get, :class => 'button'  %>
-
+<% if @list.category == nil %>
 <h2><%= @list.title %> by <%= @list.user_name %> </h2>
 
-<%= form_tag("/words/search", method: "get", remote: true) do %>
-  <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
-  <%= text_field_tag(:term) %>
-  <%= hidden_field_tag :list, @list.id %>
-  <%= submit_tag("Search", class: "button") %>
+  <%= form_tag("/words/search", method: "get", remote: true) do %>
+    <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
+    <%= text_field_tag(:term) %>
+    <%= hidden_field_tag :list, @list.id %>
+    <%= submit_tag("Search", class: "button") %>
+  <% end %>
 <% end %>
 
 <div id="word-results" class="large-12 columns"></div>
