@@ -1,5 +1,9 @@
 class ListsController < ApplicationController
 
+  def index
+    @lists = List.all
+  end
+
   def show
 
     @list = List.find(params[:id])
@@ -32,9 +36,11 @@ class ListsController < ApplicationController
       format.js {}
     end
   end
-  
+
   def search
+
      @lists = List.where(:title => params[:search])
+
   end
 
   private

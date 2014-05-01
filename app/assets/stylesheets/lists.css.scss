@@ -8,9 +8,17 @@
   margin-left: 20px;
   margin-bottom: 20px;
   padding: 50px;
-  width: 300px;
-  display: inline-block;
+  width: 100%;
+  height: auto;
 }
+
+#word-results .show-word {
+  // display: inline;
+  float: left;
+  width: 300px;
+}
+
+
 .kanji strong{
   font-size: 36px;
 }
@@ -22,6 +30,28 @@
   margin: 5px;
 }
 
+.show-word .j {
+  float: left;
+}
+
+.show-word .e {
+  float: left;
+  max-height: inherit;
+  padding-left: 30px;
+  display: block;
+}
+
+.word-buttons{
+  display: block;
+  // float: left;
+  width: 100px;
+
+}
+
+.tweet{
+  width: 400px;
+  float: right;
+}
 
 .search-result .button {
   margin: 0 auto;
@@ -34,12 +64,12 @@
   height:300px;
   text-align: center;
   padding: 50px;
-  margin: 100px auto; 
+  margin: 100px auto;
 }
 
 .flashCard p {
   font-size:24px;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 #submitAnswerButton {

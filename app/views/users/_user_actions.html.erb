@@ -1,0 +1,56 @@
+<section id="user-actions">
+
+  <!-- Create List Model -->
+  <a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
+
+  <div id="new-list" class="reveal-modal" data-reveal>
+    <%= render "lists/new_list_form.html.erb" %>
+  </div>
+  <!-- redirects to lists#edit -->
+
+
+    <h3>My Lists:</h3>
+    <ul id="users-lists">
+    <% @lists.each do |list| %>
+      <li><%= link_to list.title, list_path(list) %></li>
+    <% end %>
+    </ul>
+    <%= render "/lists/search" %>
+
+
+    <h3>My Badges:</h3>
+    <!-- <p id="users-badges"> -->
+
+    <% if @badges.count == 0 %>
+      <p>Go earn some!</p>
+    <% else %>
+      <% @badges.each do |badge| %>
+        <img src="<%= badge.image_url %>" class="badge-image">
+      <% end %>
+    <% end %>
+
+    <h3>My Friends:</h3>
+    <% if @user.friends.count == 0 %>
+      <p>No friends yet.</p>
+    <% else %>
+      <% @user.friends.each do |user|%>
+          <p><%= link_to "#{user.name}", user %></p>
+      <% end %>
+    <% end %>
+
+    <%= render "search" %>
+    <%= render "search_city" %>
+
+    <h3>Friended By:</h3>
+    <% if @user.inverse_friends.count == 0 %>
+      <p>Nobody friended you yet.</p>
+    <% else %>
+      <% @output = (@user.inverse_friends.each {|inverse| inverse.id}) - (@user.friends.each {|user| user.id }) %>
+      <%  @output.each do |friended_by| %>
+      <%= link_to "#{friended_by.name}", friended_by %>
+      <% end %>
+    <% end %>
+
+
+
+</section>

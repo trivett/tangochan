@@ -2,6 +2,7 @@ Tangochan::Application.routes.draw do
   devise_for :users
   post "/friendships/create", to: "friendships#create"
   resources :friendships
+  get "/me/:id", to: "users#profile"
   resources :users
   get "/users/search/:city", to: "users#search_city"
   get "/users/search/:email", to: "users#search"
