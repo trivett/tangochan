@@ -1,5 +1,3 @@
-console.log("workinggggggggggg");
-
 var wordList;
 
 var startButton = $('#startTestButton');
@@ -13,7 +11,7 @@ var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
   }); 
 
 function startTest(){
-  wordList = secondHackedSolutionToGetWordsFromRuby();
+  wordList = getWordsFromRuby();
   var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
   var englishAnswer = $("<div id = 'englishAnswer'><%=@list.words[0].english%></div>");
   var realAnswer= englishAnswer.text();
@@ -26,16 +24,14 @@ function startTest(){
   var submitAnswerButton = $("<button id = 'submitAnswerButton'>Submit Answer</button>");
   submitAnswerButton.appendTo(flashCard);
 
-  
   submitAnswerButton.click(function() {
       submitAnswer(realAnswer);
   });
 
-   console.log(wordList[i]);
 
 };
 
-function secondHackedSolutionToGetWordsFromRuby() {
+function getWordsFromRuby() {
   var _wordsList;
 
   $.ajax({
@@ -72,6 +68,7 @@ var english = newWord.english;
 
 flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
 flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
+
 var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
 
 
@@ -87,20 +84,28 @@ flashCard.appendTo('#container');
 
 var realAnswer= englishAnswer.text();
 
+determineAnswerCorrectness();
+
 newAnswerButton.click(function() {
       submitAnswer(realAnswer);
   });
 
-}
+};
 
 
 
 function returnNewWord(){
-  _.shuffle(wordList);
-  return wordList.pop();
-}
+  
+    console.log(wordList.length);
 
+    if (wordList.length == 0) {
+      makeTestResultsAppear();
+    } else {
+    wordList = _.shuffle(wordList);
+    return wordList.pop(); 
+    }
 
+};
 
 
 
@@ -121,7 +126,18 @@ function storeAnswer(realAnswer){
 
     var flashCard = $(".flashCard");
     flashCard.hide();
+
 };
+
+function makeTestResultsAppear() {
+  var testResults = $('<div id = "testResults"></div>');
+  testResults.appendTo('#container');
+}
+
+function determineAnswerCorrectness() {
+  alert($('#flashCardInputBox').val());
+  
+}
 
 
 startTest();
