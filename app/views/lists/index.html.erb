@@ -1,6 +1,15 @@
 <%= render "search" %>
+<hr>
 <ul>
+
   <% @lists.each do |list| %>
-    <li><%= link_to "#{list.title}", list %></li>
+    <li><%= link_to "#{list.title}", list %> -  <%= list.words.count %> words - Created at <%= list.created_at.strftime("%I:%M%p on %m/%d/%Y") %> by <%= list.user_id %></li>
+
   <% end %>
 </ul>
+
+
+
+
+
+

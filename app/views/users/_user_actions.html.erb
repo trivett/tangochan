@@ -8,7 +8,6 @@
   </div>
   <!-- redirects to lists#edit -->
 
-
     <h3>My Lists:</h3>
     <ul id="users-lists">
     <% @lists.each do |list| %>
@@ -16,7 +15,6 @@
     <% end %>
     </ul>
     <%= render "/lists/search" %>
-
 
     <h3>My Badges:</h3>
     <!-- <p id="users-badges"> -->
@@ -38,19 +36,21 @@
       <% end %>
     <% end %>
 
-    <%= render "search" %>
-    <%= render "search_city" %>
 
     <h3>Friended By:</h3>
     <% if @user.inverse_friends.count == 0 %>
-      <p>Nobody friended you yet.</p>
+      <p>Nobody has friended you yet.</p>
     <% else %>
       <% @output = (@user.inverse_friends.each {|inverse| inverse.id}) - (@user.friends.each {|user| user.id }) %>
       <%  @output.each do |friended_by| %>
       <%= link_to "#{friended_by.name}", friended_by %>
       <% end %>
     <% end %>
+    <hr>
 
+
+    <%= render "search" %>
+    <%= render "search_city" %>
 
 
 </section>

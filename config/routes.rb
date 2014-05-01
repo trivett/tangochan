@@ -16,6 +16,7 @@ Tangochan::Application.routes.draw do
       get "search"
     end
   end
+  get "/lists/:id/save_list", to: "lists#save_list"
   post "/add_to_list", to: "words#add_to_list"
   # resources :categories
   get "/categories", to: "lists#categories"
