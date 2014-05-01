@@ -42,8 +42,10 @@ class ListsController < ApplicationController
      @lists = List.where(:title => params[:search])
 
   end
+
   def destroy
     @list = List.find(params[:id])
+
     @list.destroy
     redirect_to user_path(current_user)
   end

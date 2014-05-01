@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, through: :inverse_friendships, :source => :user,  :uniq => true
 
   validates :name, :email,  presence: true
-
+  before_create :set_right_wrongs
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -61,6 +61,10 @@ end
 
   end
 
+  def set_right_wrongs
+    self.got_right = 0
+    self.got_wrong = 0
+  end
 
 
 end
