@@ -27,7 +27,9 @@ CSV.parse(File.read('lib/assets/data.csv'), headers: true) do |row|
   x.save
 end
 
-
+User.create(name: "Vincent", native_language: "English", learning_language: "Japanese", city: "Brooklyn", country: "United States", words_practiced: nil, minutes_practiced: nil, email: "vincent@http://gmail.com", password: "12345678", password_confirmation: "12345678")
+User.create(name: "Joseph", native_language: "English", learning_language: "Japanese", city: "London", country: "United Kingdom", words_practiced: nil, minutes_practiced: nil, email: "joseph@http://gmail.com", password: "12345678", password_confirmation: "12345678")
+User.create(name: "Marie", native_language: "French", learning_language: "Japanese", city: "Paris", country: "France", words_practiced: nil, minutes_practiced: nil, email: "marie@http://gmail.com", password: "12345678", password_confirmation: "12345678")
 hiragana = List.create(title: "Learn Hiragana", category: "hiragana")
 
 hiragana.words << Word.create(kana: "あ", english: "a")
@@ -154,3 +156,20 @@ animals.words << Word.where(:english => "fish")
 animals.words << Word.where(:english => "bird")
 animals.words << Word.where(:english => "ant")
 
+occupations = List.create(title: "Occupations Challenge", category: "occupations")
+occupations.words << Word.where(:english => "medical doctor")
+occupations.words << Word.where(:english => "teacher (classroom)")
+occupations.words << Word.where(:english => "pilot")
+occupations.words << Word.where(:english => "fisherman")
+occupations.words << Word.where(:english => "captain")
+
+things = List.create(title: "Random things", category: "things")
+things.words << Word.where(:kanji => "建物")
+things.words << Word.where(:kanji => "木")
+things.words << Word.where(:kanji => "階段")
+things.words << Word.where(:kanji => "石")
+things.words << Word.where(:kanji => "歩道")
+things.words << Word.where(:kanji => "湖")
+things.words << Word.where(:kanji => "川")
+things.words << Word.where(:kanji => "動物")
+things.words << Word.where(:kanji => "自動車")
