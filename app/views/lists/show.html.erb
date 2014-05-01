@@ -12,8 +12,6 @@
   <%= submit_tag("Search", class: "button") %>
 <% end %>
 
-<%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
-
 <div id="word-results" class="large-12 columns"></div>
 
 <div id="list-words-display" class="large-12 columns">
@@ -27,6 +25,10 @@
 
   </ul>
 </div>
+
+<% if @list.user_id != current_user.id %>
+  <%= link_to "Save List", "/lists/#{@list.id}/save_list", :method => :get, :class  => 'button' %>
+<% end %>
 <% if @list.category == nil %>
   <%= link_to "Remove List", @list, :method => :delete, :class => 'button'  %>
 <% end %>

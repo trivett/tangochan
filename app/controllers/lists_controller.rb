@@ -35,6 +35,7 @@ class ListsController < ApplicationController
     @user = current_user.id
     @user_list = current_user.lists
     @list = List.find(params[:id])
+
     @list.dup.save
     @user_list << @list
 
