@@ -1,6 +1,6 @@
 <%= link_to "Test List", "/lists/#{@list.id}/test", :method => :get, :class => 'button'  %>
 
-<h2><%= @list.title %></h2>
+<h2><%= @list.title %> by <%= @list.user_name %> </h2>
 
 <%= form_tag("/words/search", method: "get", remote: true) do %>
   <%= label_tag(:term, "Search for a word to add to #{@list.title}:") %>
@@ -14,7 +14,7 @@
 <div id="word-results"></div>
 
 <div id="list-words-display">
-  <h2>Words in <%= @list.title %></h2>
+  <h2>Words in <%= @list.title %> </h2>
   <ul>
 
     <% @list.words.each do |word| %>
