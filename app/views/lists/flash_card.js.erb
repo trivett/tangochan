@@ -116,6 +116,9 @@ function refreshFlashCard(newWord){
     submitAnswer(realAnswer);
     addWordToEndOfList(newWord);
     updateCurrentUserGotWrong();
+    start();
+    makePauseButtonAppear.hide();
+    makePauseButtonAppear();
   });
 
 
@@ -129,6 +132,9 @@ function refreshFlashCard(newWord){
 
     updateCurrentUserGotRight();
     submitAnswer(realAnswer);
+    start();
+    makePauseButtonAppear.hide();
+    makePauseButtonAppear();
   });
 
 
