@@ -1,1 +1,5 @@
 <%= link_to "Start Flash Cards", "/lists/#{@list.id}/flash_card", :id => "startFlashCardButton", :method => :get, :class => 'button', :remote => true  %>
+
+<body onload="show();">
+  <p>Time: <div id="time"></div></p>
+</body>
