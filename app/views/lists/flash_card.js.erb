@@ -7,13 +7,27 @@ var currentUserGotWrong = "<%=@user.got_wrong%>";
 var startButton = $('#startFlashCardButton');
 startButton.fadeOut(50);
 
+function makePauseButtonAppear() {
 var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
   pauseButton.fadeIn(300);
   $('#container').append(pauseButton);
   pauseButton.click(function(){
-    alert("pause test");
+    pause();
+    pauseButton.hide();
+    makeResumeButtonAppear();
 });
+}
 
+function makeResumeButtonAppear() {
+  var resumeButton = $("<button id = 'resumeButton'>Resume</button>");
+    resumeButton.fadeIn(300);
+    resumeButton.appendTo('#container');
+    resumeButton.click(function(){
+      start();
+      resumeButton.hide();
+      makePauseButtonAppear();
+  });
+}
 
 function getWordsFromRuby() {
   var _wordsList;
@@ -159,4 +173,5 @@ function makeTestResultsAppear() {
 
 
 refreshFlashCard(firstWord);
-
+start();
+makePauseButtonAppear();
