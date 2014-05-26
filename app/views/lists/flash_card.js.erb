@@ -70,26 +70,19 @@ function submitAnswer(numberCorrect){
 
 function refreshFlashCard(newWord){
 
-  console.log(newWord);
+  
   var flashCard = $("<div class='flashCard'></div>");
   var kanji = newWord.kanji || " ";
   var kana = newWord.kana;
   var english = newWord.english;
-
-
+  var passButton = $("<button id = 'passButton'>Pass</button>");
+  var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
+  var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
 
   flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
-
-
   flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
   flashCard.append("<p id = 'englishAnswer'>" + english + "</p>");
-
-  var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
-
-  var newAnswerButton = $("<button id = 'newAnswerButton'>Next</button>");
   newAnswerButton.appendTo(flashCard);
-
-  var passButton = $("<button id = 'passButton'>Pass</button>");
   passButton.appendTo(flashCard);
 
   console.log(kanji);
