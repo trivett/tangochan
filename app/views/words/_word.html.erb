@@ -15,6 +15,7 @@
             <%= hidden_field_tag(:term, word.kanji) %>
             <%= submit_tag("See this in a tweet", class: "button") %>
           <% end %>
+
       <% if @list.category == nil %>
         <div id="deleteWord">
           <%= form_tag("/words/remove_from_list", method: "post", remote: true) do %>
