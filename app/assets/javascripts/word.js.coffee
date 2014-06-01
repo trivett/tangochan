@@ -3,10 +3,9 @@
 
 
 $(".show-word .button").click ->
-  console.log('clicked')
-  $.ajax
+   console.log(@)
+   $.ajax
     dataType: "json"
-
-    success: console.log("done")
-
-  console.log(tweet)
+    url: "/words/tweet.json?utf8=✓&term=建物"
+    success: (tweet) ->
+      console.log(tweet)
