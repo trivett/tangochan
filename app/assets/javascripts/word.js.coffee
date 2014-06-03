@@ -2,8 +2,8 @@
   # }
 
 
-$(".show-word .button").click ->
-   console.log(@)
+$(".get-tweet").click ->
+
    $.ajax
     dataType: "json"
     url: "/words/tweet.json?utf8=✓&term=建物"
