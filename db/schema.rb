@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140501181945) do
+ActiveRecord::Schema.define(version: 20140601143946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20140501181945) do
   create_table "badges_users", id: false, force: true do |t|
     t.integer "badge_id"
     t.integer "user_id"
+  end
+
+  create_table "categories_words", force: true do |t|
+    t.integer "category_id"
+    t.integer "word_id"
   end
 
   create_table "friendships", force: true do |t|
@@ -59,6 +64,9 @@ ActiveRecord::Schema.define(version: 20140501181945) do
     t.string   "country"
     t.integer  "words_practiced"
     t.integer  "minutes_practiced"
+    t.integer  "got_right"
+    t.integer  "got_wrong"
+    t.string   "image_url"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -69,9 +77,6 @@ ActiveRecord::Schema.define(version: 20140501181945) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "got_right"
-    t.integer  "got_wrong"
-    t.string   "image_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

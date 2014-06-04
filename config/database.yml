@@ -18,6 +18,8 @@ development:
   adapter: postgresql
   encoding: unicode
   database: tangochan_development
+  host: /tmp
+  port: 5433
   pool: 5
 
 
@@ -46,6 +48,8 @@ test:
   adapter: postgresql
   encoding: unicode
   database: tangochan_test
+  host: /tmp
+  port: 5433
   pool: 5
 
 
@@ -53,5 +57,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: tangochan_production
+  host: /tmp
+  port: 5433
   pool: 5
 
