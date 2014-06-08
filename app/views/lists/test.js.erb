@@ -1,5 +1,6 @@
 var wordList;
-wordList = _.shuffle(wordList);
+
+
 
 var startButton = $('#startTestButton');
   startButton.fadeOut(50);
@@ -11,221 +12,108 @@ var pauseButton = $("<button id = 'pauseButton' value='pause'>Pause</button>");
     pause();
   }); 
 
-
-
-function startTest(){
-  wordList = getWordsFromRuby();
-  var flashCard = $("<div class = 'flashCard'><p><%=@list.words[0].kanji%></p><p><%=@list.words[0].kana%></p><div>");
-  var englishAnswer = $("<div id = 'englishAnswer'><%=@list.words[0].english%></div>");
-  var realAnswer= englishAnswer.text();
-  flashCard.fadeIn(500);
-  flashCard.appendTo('#container');
-
-  var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
-  flashCardInputBox.appendTo(flashCard);
-
-  var submitAnswerButton = $("<button id = 'submitAnswerButton'>Submit Answer</button>");
-  submitAnswerButton.appendTo(flashCard);
-
-  submitAnswerButton.click(function() {
-      submitAnswer(realAnswer);
-  });
-
-
-};
+var graphicContainer = $("<div class= 'column graphicContainer'></div>");
+  graphicContainer.appendTo('#container');
+  
 
 function getWordsFromRuby() {
-  var _wordsList;
-
   $.ajax({
     url: '/lists/<%=@list.id%>',
     method: 'get',
     dataType: 'json',
     async: false,
     success: function(data){
-      _wordsList = data;
+      wordList = data;
     }
   })
-
-  return _wordsList;
-
+  takeTest();
 };
 
 
-function submitAnswer(realAnswer){
-  
-  storeAnswer(realAnswer);
-  var newWord = returnNewWord();
-  refreshFlashcard(newWord);
-  
+function takeTest(){
+  var newFlashCardObj = newFlashCard();
+  displayTest(newFlashCardObj);
 };
 
 
-function refreshFlashcard(newWord){
-
-console.log(newWord);
-var flashCard = $("<div class='flashCard'></div>");
-var kanji = newWord.kanji;
-var kana = newWord.kana;
-var english = newWord.english;
-
-flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
-flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
-
-var englishAnswer = $("<p id = 'englishAnswer'>" + english + "</p>");
-
-
-var flashCardInputBox = $("<form><input id='flashCardInputBox' name='answer'></form>");
-flashCardInputBox.appendTo(flashCard);
-
-var newAnswerButton = $("<button id = 'newAnswerButton'>Submit Answer</button>");
-newAnswerButton.appendTo(flashCard);
-
-console.log(kanji);
-flashCard.appendTo('#container');
-
-
-var realAnswer= englishAnswer.text();
-
-
-
-newAnswerButton.click(function() {
-      submitAnswer(realAnswer);
-      determineAnswerCorrectness(realAnswer);
-  });
-
-};
-
-
-
-function returnNewWord(){
-  
-    console.log(wordList.length);
-
+function newFlashCard() {
     if (wordList.length == 0) {
       makeTestResultsAppear();
     } else {
-    wordList = _.shuffle(wordList);
-    return wordList.pop(); 
+      wordList = _.shuffle(wordList);
+      return wordList.pop(); 
     }
-
 };
 
 
+function displayTest(newFlashCardObj) {
+  console.log(newFlashCardObj);
+  var newFlashCardObj = newFlashCardObj;
+  var flashCard = $("<div class='flashCard'></div>");
+  var kanji = newFlashCardObj.kanji;
+  var kana = newFlashCardObj.kana;
+  var englishAnswer = newFlashCardObj.english;
 
-function storeAnswer(realAnswer){
-  var userAnswer = $('#flashCardInputBox').val(); 
-  
-    $.ajax({
-      url: '/lists/<%=@list.id%>/test',
-      method: 'post',
-      data: {
-        flashCardInput: userAnswer, 
-        flashCardAnswer: realAnswer
-      },
-      dataType: 'json'
-    }).done(function(data){
-      console.log(data);
-    });
+  flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
+  flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
 
-    var flashCard = $(".flashCard");
-    flashCard.hide();
+  var flashCardInputBox = $("<input id='flashCardInputBox' name='answer'>");
+  flashCardInputBox.appendTo(flashCard);
 
+  var newAnswerButton = $("<button id = 'newAnswerButton'>Submit Answer</button>");
+  newAnswerButton.appendTo(flashCard);
+  flashCard.appendTo('#container');
+
+  newAnswerButton.click(function() {
+    var userAnswer = flashCardInputBox.val();
+    determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj);
+  });
 };
+
+
+function determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj) {
+  var splitEnglishAnswer = englishAnswer.split(" ");
+  console.log(splitEnglishAnswer);
+  console.log(newFlashCardObj);
+
+
+  if (isInArray(userAnswer, splitEnglishAnswer)) {
+    $('.flashCard').css('background-color', 'green')
+    graphicContainer.html('&#10003;');
+  } else {
+    $('.flashCard').css('background-color', 'red')
+    storeAnswer(newFlashCardObj);
+    graphicContainer.html('<h1>X</h1>');
+  }
+
+  $(".flashCard").hide()
+
+  var nextFlashCardObj = newFlashCard();
+  displayTest(nextFlashCardObj);
+};
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+};
+
+function storeAnswer(newFlashCardObj){
+  $.ajax({
+    url: '/lists/<%=@list.id%>/test',
+    method: 'post',
+    data: {
+      newFlashCardObj: newFlashCardObj
+    },
+    dataType: 'json'
+  }).done(function(data){
+    console.log(data);
+  });
+};
+
 
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
   testResults.appendTo('#container');
 }
 
-function determineAnswerCorrectness(realAnswer) {
-  var userAnswer = ($('#flashCardInputBox').val());
-  splitRealAnswer = realAnswer.split(" ");
 
-  console.log(splitRealAnswer);
-
-  if (_.contains(splitRealAnswer, userAnswer)) {
-    $('.flashCard').css('background-color', 'green')
-  } else {
-    $('.flashCard').css('background-color', 'red')
-  }
-  console.log(realAnswer);
-  console.log(userAnswer);
-}
-
-
-var Stopwatch = function() {
-    var startAt = 0; 
-    var lapTime = 0; 
- 
-    var now = function() {
-        return (new Date()).getTime(); 
-      }; 
-    this.start = function() {
-        if (startAt) {
-          startAt = startAt;
-        } else {
-          startAt = now();
-        };
-      };
-    this.pause = function() {
-        lapTime = startAt ? lapTime + now() - startAt : lapTime;
-        startAt = 0; 
-      };
-
-    this.time = function() {
-        return lapTime + (startAt ? now() - startAt : 0); 
-      };
-  };
- 
-var x = new Stopwatch();
-var $time;
-var clocktimer;
- 
-function pad(num, size) {
-  var s = "0000" + num;
-  return s.substr(s.length - size);
-}
- 
-function formatTime(time) {
-  var m = s = ms = 0;
-  var newTime = '';
- 
-  m = Math.floor( time / (60 * 1000) );
-  time = time % (60 * 1000);
-  s = Math.floor( time / 1000 );
-  ms = time % 1000;
- 
-  newTime = pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 3);
-  return newTime;
-}
- 
-function show() {
-  $time = document.getElementById('time');
-  update();
-}
- 
-function update() {
-  $time.innerHTML = formatTime(x.time());
-}
- 
-function start() {
-  clocktimer = setInterval("update()", 1);
-  x.start();
-}
- 
-function pause() {
-  x.pause();
-  clearInterval(clocktimer);
-}
-
-
-
-
-
-startTest();
-
-
-
-
-
+getWordsFromRuby();

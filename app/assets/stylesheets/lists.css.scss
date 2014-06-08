@@ -81,6 +81,16 @@
   font-size:24px;
   font-weight: bold;
 }
+.graphicContainer {
+  text-align: right;
+  font-size: 1000%;
+  color: green;
+}
+
+.graphicContainer h1{
+  font-size: 80%;
+  color: red;
+}
 
 #submitAnswerButton {
   margin-top: 20px;
@@ -118,4 +128,9 @@
 #word-results{
   display: block;
   height: auto;
+}
+
+#flashCardInputBox {
+  display: block;
+  margin-left: 200px;
 }
