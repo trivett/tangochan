@@ -1,6 +1,10 @@
 #list-words-display{
   // width: 1000px;
 }
+
+.list-delete-button {
+  margin-bottom:10px;
+}
 .show-word{
   border: solid 1px #CCC;
   box-shadow: 5px 10px 10px 5px #888888;
@@ -29,6 +33,11 @@
   text-align: center;
   padding: 3px;
   margin: 5px;
+}
+
+.show-word li {
+  font-size: 34px;
+
 }
 
 .show-word .j {
