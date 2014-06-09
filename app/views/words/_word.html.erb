@@ -9,9 +9,12 @@
         <li><%= meaning %></li>
       <% end %>
     </ul>
-    <div id="tweet-<%= word.kanji %>" class="tweet"></div>
+   <div id="tweet-<%= word.kanji %>" class="tweet"></div>
       <div class="word-buttons">
-        <%= button_tag("See this in a tweet", class: "button get-tweet") %>
+          <%= form_tag("/words/tweet", method: "get", remote: true) do %>
+            <%= hidden_field_tag(:term, word.kanji) %>
+            <%= submit_tag("See this in a tweet", class: "button") %>
+          <% end %>
       <% if @list.category == nil %>
         <div id="deleteWord">
           <%= form_tag("/words/remove_from_list", method: "post", remote: true) do %>

@@ -7,27 +7,7 @@ var currentUserGotWrong = "<%=@user.got_wrong%>";
 var startButton = $('#startFlashCardButton');
 startButton.fadeOut(50);
 
-function makePauseButtonAppear() {
-var pauseButton = $("<button id = 'pauseButton'>Pause</button>");
-  pauseButton.fadeIn(300);
-  $('#container').append(pauseButton);
-  pauseButton.click(function(){
-    pause();
-    pauseButton.hide();
-    makeResumeButtonAppear();
-});
-}
 
-function makeResumeButtonAppear() {
-  var resumeButton = $("<button id = 'resumeButton'>Resume</button>");
-    resumeButton.fadeIn(300);
-    resumeButton.appendTo('#container');
-    resumeButton.click(function(){
-      start();
-      resumeButton.hide();
-      makePauseButtonAppear();
-  });
-}
 
 function getWordsFromRuby() {
   var _wordsList;
@@ -51,6 +31,7 @@ function returnNewWord(){
     if (wordList.length == 0) {
       makeTestResultsAppear();
       storeAnswer(numberCorrect)
+
 
     } else {
     return wordList.pop();
@@ -110,8 +91,6 @@ function refreshFlashCard(newWord){
     addWordToEndOfList(newWord);
     updateCurrentUserGotWrong();
     start();
-    makePauseButtonAppear.hide();
-    makePauseButtonAppear();
   });
 
 
@@ -126,11 +105,7 @@ function refreshFlashCard(newWord){
     updateCurrentUserGotRight();
     submitAnswer(realAnswer);
     start();
-    makePauseButtonAppear.hide();
-    makePauseButtonAppear();
   });
-
-
 
 
 };
@@ -156,12 +131,11 @@ function storeAnswer(numberCorrect){
 
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
-  var finishedButton = $('<%= link_to "Finished!", "/lists/#{@list.id}", :method => :get, :class => 'button'  %>')
   var gotRight = $('<p id = "gotRightResults">' + "You got a grand total of " + currentUserGotRight + " words correct since you started TangoChan. Keep it up!" + '</p>');
   gotRight.appendTo(testResults);
-  finishedButton.appendTo(testResults);
   testResults.appendTo('#container');
-
+  $('<%=link_to "Back to List", @list%>').appendTo(testResults);
+  pause();
 }
 
 
@@ -173,4 +147,3 @@ function makeTestResultsAppear() {
 
 refreshFlashCard(firstWord);
 start();
-makePauseButtonAppear();

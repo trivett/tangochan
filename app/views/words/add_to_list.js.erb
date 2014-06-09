@@ -1,5 +1,5 @@
 var word = $("<%= j(render @word) %>");
 console.log(word);
-$('#list-words-display ul').append(word);
+$('#list-words-display').prepend(word);
 var wordResults = $('#word-results');
 wordResults.fadeOut(250);

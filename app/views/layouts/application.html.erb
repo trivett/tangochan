@@ -23,6 +23,7 @@
         <% if user_signed_in? %>
           <span id="whoami">Signed in as<%= link_to " #{current_user.name}", user_path(current_user)  %></span>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %>
+          <%= link_to "Your profile", "/me/#{current_user.id}", :class => "button"  %>
         <% else %>
           <%= link_to "Sign up", new_user_registration_path, :class => 'button'  %>
           <%= link_to "Login", new_user_session_path, :class => 'button',  :"data-reveal-id" => "login-form" %>
@@ -45,8 +46,8 @@
 
   <!-- Footer -->
 
-  <footer class="row">
-    <div class="large-12 columns">
+ 
+    <div class="large-8 large-offset-2 columns">
       <hr />
       <div class="row">
         <div class="large-6 columns">
@@ -62,7 +63,7 @@
         </div>
       </div>
     </div>
-  </footer>
+
 
 
     <%= javascript_include_tag "application" %>
