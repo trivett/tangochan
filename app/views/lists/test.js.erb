@@ -1,5 +1,6 @@
 var wordList;
-
+var amountCorrect = 0;
+var amountOfWords;
 
 
 var startButton = $('#startTestButton');
@@ -24,6 +25,7 @@ function getWordsFromRuby() {
     async: false,
     success: function(data){
       wordList = data;
+      amountOfWords = data.length;
     }
   })
   takeTest();
@@ -76,10 +78,10 @@ function determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj) 
   console.log(splitEnglishAnswer);
   console.log(newFlashCardObj);
 
-
   if (isInArray(userAnswer, splitEnglishAnswer)) {
     $('.flashCard').css('background-color', 'green')
     graphicContainer.html('&#10003;');
+    amountCorrect ++;
   } else {
     $('.flashCard').css('background-color', 'red')
     storeAnswer(newFlashCardObj);
@@ -92,9 +94,11 @@ function determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj) 
   displayTest(nextFlashCardObj);
 };
 
+
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
 };
+
 
 function storeAnswer(newFlashCardObj){
   $.ajax({
@@ -113,6 +117,8 @@ function storeAnswer(newFlashCardObj){
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
   testResults.appendTo('#container');
+  var testResultsText = $('<p id = "testResultsText">You answered ' + amountCorrect + ' out of ' + amountOfWords + ' correctly!<p>');
+  testResultsText.appendTo(testResults);
 }
 
 
