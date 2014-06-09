@@ -1,3 +1,7 @@
-
 <%= link_to "Start Test", "/lists/#{@list.id}/test", :id => "startTestButton", :method => :get, :class => 'button', :remote => true  %>
 
+<body onload="show();">
+  <div class = "medium-2 medium-offset-10 timer-container">
+    <h1>Time</h1> <div id="time"></div>
+  </div>
+</body>

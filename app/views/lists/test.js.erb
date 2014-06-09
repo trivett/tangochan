@@ -2,16 +2,8 @@ var wordList;
 var amountCorrect = 0;
 var amountOfWords;
 
-
 var startButton = $('#startTestButton');
   startButton.fadeOut(50);
-
-var pauseButton = $("<button id = 'pauseButton' value='pause'>Pause</button>");
-  pauseButton.fadeIn(300);
-  pauseButton.appendTo('#container');
-  pauseButton.click(function(){
-    pause();
-  }); 
 
 var graphicContainer = $("<div class= 'column graphicContainer'></div>");
   graphicContainer.appendTo('#container');
@@ -120,7 +112,9 @@ function makeTestResultsAppear() {
   var testResultsText = $('<p id = "testResultsText">You answered ' + amountCorrect + ' out of ' + amountOfWords + ' correctly!<p>');
   testResultsText.appendTo(testResults);
   $('<%=link_to "Back to List", @list%>').appendTo(testResults);
+  pause();
 }
 
 
 getWordsFromRuby();
+start();
