@@ -138,11 +138,10 @@ function storeAnswer(numberCorrect){
 
 function makeTestResultsAppear() {
   var testResults = $('<div id = "testResults"></div>');
-  var finishedButton = $('<%= link_to "Finished!", "/lists/#{@list.id}", :method => :get, :class => 'button'  %>')
   var gotRight = $('<p id = "gotRightResults">' + "You got a grand total of " + currentUserGotRight + " words correct since you started TangoChan. Keep it up!" + '</p>');
   gotRight.appendTo(testResults);
-  finishedButton.appendTo(testResults);
   testResults.appendTo('#container');
+  $('<%=link_to "Back to List", @list%>').appendTo(testResults);
   pause();
 }
 
