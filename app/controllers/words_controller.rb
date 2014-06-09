@@ -40,13 +40,8 @@ class WordsController < ApplicationController
 
   def tweet
     @word = params[:term]
-
-    tweet = $client.search(@word, :lang => "ja", :result => "popular").first
-
     respond_to do |format|
-      format.json {
-        render json: tweet
-      }
+      format.js {}
     end
   end
 
