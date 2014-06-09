@@ -119,6 +119,7 @@ function makeTestResultsAppear() {
   testResults.appendTo('#container');
   var testResultsText = $('<p id = "testResultsText">You answered ' + amountCorrect + ' out of ' + amountOfWords + ' correctly!<p>');
   testResultsText.appendTo(testResults);
+  $('<%=link_to "Back to List", @list%>').appendTo(testResults);
 }
 
 
