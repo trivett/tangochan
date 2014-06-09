@@ -23,3 +23,19 @@
   width:150px;
   height:150px;
 }
+
+#users-lists {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+#users-lists p {
+  border: solid 1px #CCC;
+  box-shadow: 2px 4px 4px 2px #888888;
+  margin: 5px auto;
+  width: 100%;
+  height: auto;
+  display: block;
+  text-align: center;
+  font-size: 24px;
+}

@@ -4,7 +4,6 @@
   <h2>Welcome back, <%= @user.name %></h2>
   <img src="<%= @user.image_url %>" id="user_image">
 
-  <%= link_to "Your profile", "/me/#{current_user.id}", :class => "button"  %>
   <h3>Your TangoChan Stats</h3>
   <p><strong>Total words practiced:</strong> <%= @words_practiced %></p>
   <h3>My Badges:</h3>

@@ -1,20 +1,18 @@
 <section id="user-actions">
 
   <!-- Create List Model -->
-  <a href="#" data-reveal-id="new-list" class="button">New Vocab List</a>
-
   <div id="new-list" class="reveal-modal" data-reveal>
     <%= render "lists/new_list_form.html.erb" %>
   </div>
   <!-- redirects to lists#edit -->
 
-    <h3>My Lists:</h3>
-    <ul id="users-lists">
-    <% @lists.each do |list| %>
-      <li><%= link_to list.title, list_path(list) %></li>
-    <% end %>
-    </ul>
-      <p><%= link_to "Lists by category", "/categories" %></p>
+    <h3>My Lists: <a href="#" data-reveal-id="new-list" class="new-list button tiny"> + </a></h3>
+    <div id="users-lists">
+      <% @lists.each do |list| %>
+        <p><%= link_to list.title, list_path(list) %></p>
+      <% end %>
+    </div>
+    <p><%= link_to "Lists by category", "/categories" %></p>
     <%= render "/lists/search" %>
     <p><%= link_to "All lists", lists_path %></p>
 
