@@ -5,20 +5,17 @@ Badge.delete_all
 List.delete_all
 
 
-# badges
 
-ten_words = Badge.create(name: "Ten Words", description: "You have practiced 10 words. Congratulations!", image_url: "http://static.lalawag.com/wp-content/uploads/adventurer1.png")
 
-fifty_words = Badge.create(name: "Fifty Words", description: "You have practiced 50 words. Congratulations!", image_url: "http://www.wikinoticia.com/images2//s3.alt1040.com/files/2011/07/superstar.jpg")
-one_hundred_words = Badge.create(name: "One Hundred Words", description: "You have practiced 100 words. Congratulations!", image_url: "http://drspikecook.com/files/2014/04/100days-2apxw9x.jpg")
-five_hundred_words = Badge.create(name: "Five Hundred Words", description: "You have practiced 500 words. Congratulations!", image_url: "https://www.buzzmath.com/Medias_Collection/Badges/achievement-class-500-gold-stars/badge_l.png")
+ten_words = Badge.create(name: "Ten Words", description: "You have practiced 10 words. Congratulations!", image_url: "https://farm6.staticflickr.com/5231/14199516877_69ed12f4b8_q.jpg")
+fifty_words = Badge.create(name: "Fifty Words", description: "You have practiced 50 words. Congratulations!", image_url: "https://farm4.staticflickr.com/3845/14199360647_02fc39faf8_s.jpg")
+one_hundred_words = Badge.create(name: "One Hundred Words", description: "You have practiced 100 words. Congratulations!", image_url: "https://farm3.staticflickr.com/2929/14382561991_6e4d6a72fd_s.jpg")
+five_hundred_words = Badge.create(name: "Five Hundred Words", description: "You have practiced 500 words. Congratulations!", image_url: "https://farm3.staticflickr.com/2917/14199299378_fc56800419_s.jpg")
+one_thousand_words = Badge.create(name: "One Thousand Words", description: "You have practiced 1000 words. Congratulations!", image_url: "https://farm3.staticflickr.com/2930/14199362567_315e2aa01e_s.jpg")
 
 one_hour = Badge.create(name: "One Hour", description: "You have practiced for 1 hour. Congratulations!", image_url: "http://static.lalawag.com/wp-content/uploads/adventurer1.png")
-
 five_hours = Badge.create(name: "Five Hours", description: "You have practiced for 5 hours. Congratulations!", image_url: "http://www.wikinoticia.com/images2//s3.alt1040.com/files/2011/07/superstar.jpg")
-
 twenty_five_hours = Badge.create(name: "Twenty Five Hours", description: "You have practiced for 25 hours. Congratulations!", image_url: "http://drspikecook.com/files/2014/04/100days-2apxw9x.jpg")
-
 one_hundred_hours = Badge.create(name: "One Hundred Hours", description: "You have practiced for 100 hours. Congratulations!", image_url: "https://www.buzzmath.com/Medias_Collection/Badges/achievement-class-500-gold-stars/badge_l.png")
 
 
