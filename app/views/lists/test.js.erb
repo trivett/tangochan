@@ -41,7 +41,6 @@ function newFlashCard() {
 
 
 function displayTest(newFlashCardObj) {
-  console.log(newFlashCardObj);
   var newFlashCardObj = newFlashCardObj;
   var flashCard = $("<div class='flashCard'></div>");
   var kanji = newFlashCardObj.kanji;
@@ -51,12 +50,23 @@ function displayTest(newFlashCardObj) {
   flashCard.append("<p id='flashCardKanji'>" + kanji + "</p>");
   flashCard.append("<p id='flashCardKana'>" + kana + "</p>");
 
-  var flashCardInputBox = $("<input id='flashCardInputBox' name='answer'>");
+  var flashCardInputBox = $("<input id='flashCardInputBox' name='answer' autofocus>");
   flashCardInputBox.appendTo(flashCard);
 
   var newAnswerButton = $("<button id = 'newAnswerButton'>Submit Answer</button>");
   newAnswerButton.appendTo(flashCard);
   flashCard.appendTo('#container');
+
+  $('#flashCardInputBox').focus();
+
+  $('.flashCard').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+      var userAnswer = flashCardInputBox.val();
+      determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj); 
+    }
+
+  });
 
   newAnswerButton.click(function() {
     var userAnswer = flashCardInputBox.val();
@@ -80,7 +90,7 @@ function determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj) 
     graphicContainer.html('<h1>X</h1>');
   }
 
-  $(".flashCard").hide()
+  $(".flashCard").detach()
 
   var nextFlashCardObj = newFlashCard();
   displayTest(nextFlashCardObj);
@@ -114,6 +124,7 @@ function makeTestResultsAppear() {
   $('<%=link_to "Back to List", @list%>').appendTo(testResults);
   pause();
 }
+
 
 
 getWordsFromRuby();
