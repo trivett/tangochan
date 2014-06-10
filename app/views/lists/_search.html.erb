@@ -1,5 +1,5 @@
 
- <%= form_tag("/lists/search/:title", :method => 'get') do %>
+ <%= form_tag("/lists/search/:title", :method => 'get', :id => 'list_search_field') do %>
     <%= label_tag(:search,"Search for lists by title") %>
     <%= text_field :search, params[:title], :id => 'search_field' %>
     <%= submit_tag "Search" %>

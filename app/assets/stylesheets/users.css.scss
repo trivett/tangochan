@@ -14,9 +14,12 @@
   padding: 50px;
 }
 
-#user-image{
+#user_image{
   max-height: 400px;
+  margin-top: 5%;
+  margin-bottom: 10%;
   float: left;
+  border-radius: 180%;
 }
 
 .badge-image {
@@ -27,6 +30,7 @@
 #users-lists {
   list-style-type: none;
   margin-top: 20px;
+  margin-bottom: 5%;
 }
 
 #users-lists p {
