@@ -68,6 +68,11 @@
   text-align: center;
 }
 
+#startTestButton {
+  margin-left:42%;
+  margin-top: 5%;
+}
+
 .flashCard {
   border: solid 10px #000;
   width:600px;
@@ -153,6 +158,22 @@
   border-radius: 180px;
 }
 
+#list_search_field {
+  margin-top:15%;
+  margin-bottom: 15%;
+}
+
+#list_search_field label {
+  font-size: 22px;
+}
+
+.list-text {
+  margin-bottom: 0px;
+}
+
+label {
+  font-size:20px;
+}
 
 
 
