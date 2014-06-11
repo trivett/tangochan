@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @user.got_right += params[:got_right].to_i
+    @user.got_wrong += params[:got_wrong].to_i
     @user.save
       respond_to do |format|
         format.js {}
