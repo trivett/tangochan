@@ -1,0 +1,9 @@
+var audio = document.getElementById('audio');
+
+jQuery.ajax({
+    url: '/echo/json/',
+    async: false,
+    complete: function() {
+        audio.play(); // audio will play in iOS before 4.2.1. Audio will not play in any iOS device 4.2.1 or later.
+    }
+});

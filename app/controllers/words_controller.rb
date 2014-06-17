@@ -45,6 +45,14 @@ class WordsController < ApplicationController
     end
   end
 
+  def audio
+    @word = params[:term]
+        respond_to do |format|
+      format.js {}
+    end
+  end
+
+
   def remove_from_list
     @word = Word.find(params[:word_id])
     @list = List.find(params[:list_id])
