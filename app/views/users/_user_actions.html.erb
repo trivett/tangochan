@@ -14,6 +14,8 @@
     </div>
     <p class="list-text"><%= link_to "Lists by category", "/categories" %></p>
     <p class="list-text"><%= link_to "All lists", lists_path %></p>
+    <p class="list-text"><%= link_to "Practice Problem Words", "/users/#{@user.id}/practice_words" %></p>
+
     <%= render "/lists/search" %>
     
 

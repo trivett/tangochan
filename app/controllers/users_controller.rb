@@ -61,6 +61,23 @@ def update_score
   end
 end
 
+def practice_words
+  @user = User.find(params[:id])
+  practice_word_id_array = @user.words_to_be_practiced
+  @practice_words = []
+  practice_word_id_array.each do |id|
+    @practice_words << Word.find(id)
+  end
+end
+
+def practice_words_test
+  @user = User.find(params[:id])
+end
+
+def practice_words_flash_card
+  @user = User.find(params[:id])
+end
+
 
 end
 

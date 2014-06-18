@@ -20,6 +20,9 @@ Tangochan::Application.routes.draw do
   post "/add_to_list", to: "words#add_to_list"
   # resources :categories
   get "/categories", to: "lists#categories"
+  get "/users/:id/practice_words", to: "users#practice_words"
+  get "/users/:id/practice_words/test", to: "users#practice_words_test"
+  get "/users/:id/practice_words/flash_card", to: "users#practice_words_flash_card"
   get "/lists/:id/test", to: "lists#test"
   get "/lists/:id/flash_card", to: "lists#flash_card"
   post "/lists/:id/test", to: "lists#test"
