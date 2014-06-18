@@ -2,6 +2,7 @@ var wordList;
 var amountRight = 0;
 var amountWrong = 0;
 var amountOfWords;
+var wordsToBePracticed = [];
 
 
 var startButton = $('#startTestButton');
@@ -79,8 +80,6 @@ function displayTest(newFlashCardObj) {
 
 function determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj) {
   var splitEnglishAnswer = englishAnswer.split(" ");
-  console.log(splitEnglishAnswer);
-  console.log(newFlashCardObj);
 
   if (isInArray(userAnswer, splitEnglishAnswer)) {
     $('.flashCard').css('background-color', 'green')
@@ -89,6 +88,7 @@ function determineAnswerCorrectness(englishAnswer, userAnswer, newFlashCardObj) 
   } else {
     graphicContainer.html('<h1>X</h1>');
     amountWrong ++;
+    wordsToBePracticed.push(newFlashCardObj.id);
   }
 
   $(".flashCard").detach()
@@ -103,13 +103,14 @@ function isInArray(value, array) {
 };
 
 
-function updateUserScore(amountRight, amountWrong){
+function updateUserScore(amountRight, amountWrong, wordsToBePracticed){
   $.ajax({
     url: '/users/<%=@user.id%>/update_score',
     method: 'post',
     data: {
       got_right: amountRight,
-      got_wrong: amountWrong
+      got_wrong: amountWrong,
+      words_to_be_practiced: wordsToBePracticed
     },
     dataType: 'json'
   }).done(function(data){
@@ -124,10 +125,12 @@ function makeTestResultsAppear() {
   var testResultsText = $('<p id = "testResultsText">You answered ' + amountRight + ' out of ' + amountOfWords + ' correctly!<p>');
   testResultsText.appendTo(testResults);
   $('<%=link_to "Back to List", @list%>').appendTo(testResults);
-  updateUserScore(amountRight, amountWrong);
+  updateUserScore(amountRight, amountWrong, wordsToBePracticed);
   pause();
-  console.log('<%=@user.got_wrong%>');
-  console.log('<%=@user.got_right%>');
+  console.log('<%= @user.got_wrong %>');
+  console.log('<%= @user.got_right %>');
+  console.log('<%=raw @user.words_to_be_practiced %>');
+
 }
 
 
