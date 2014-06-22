@@ -9,19 +9,39 @@
         <li><%= meaning %></li>
       <% end %>
     </ul>
-    <div id="audio-<%= word.kanji %>" class="audio"></div>
-    <div class ="audio-button">
-      <%= form_tag("/words/audio", method: "get", remote: true) do %>
-            <%= hidden_field_tag(:term, word.kanji) %>
-            <%= submit_tag("pronounce", class: "button") %>
-          <% end %>
-    </div>
+
+    <% if word.kanji %>
+      <div id="audio-<%= word.kanji %>" class="audio"></div>
+      <div class ="audio-button">
+        <%= form_tag("/words/audio", method: "get", remote: true) do %>
+              <%= hidden_field_tag(:term, word.kanji) %>
+              <%= submit_tag("pronounce kanji term", class: "button") %>
+              <% end %>
+        </div>
+    <% else %>
+      <div id="audio-<%= word.kana %>" class="audio"></div>
+      <div class ="audio-button">
+        <%= form_tag("/words/audio", method: "get", remote: true) do %>
+              <%= hidden_field_tag(:term, word.kana) %>
+              <%= submit_tag("pronounce kana term", class: "button") %>
+              <% end %>
+        </div>
+    <% end %>
+
    <div id="tweet-<%= word.kanji %>" class="tweet"></div>
       <div class="word-buttons">
           <%= form_tag("/words/tweet", method: "get", remote: true) do %>
             <%= hidden_field_tag(:term, word.kanji) %>
-            <%= submit_tag("See this in a tweet", class: "button") %>
+            <%= submit_tag("See kanji in a tweet", class: "button") %>
           <% end %>
+      </div>
+        <div id="tweet-<%= word.kana %>" class="tweet"></div>
+           <div class="word-buttons">
+               <%= form_tag("/words/tweet", method: "get", remote: true) do %>
+                 <%= hidden_field_tag(:term, word.kana) %>
+                 <%= submit_tag("See kana in a tweet", class: "button") %>
+               <% end %>
+            </div>
       <% if @list.category == nil %>
         <div id="deleteWord">
           <%= form_tag("/words/remove_from_list", method: "post", remote: true) do %>
@@ -31,8 +51,7 @@
            <% end %>
          </div>
       <% end %>
-      </div>
-    </div>
+
+
   <!-- </div> -->
 </div>
-
