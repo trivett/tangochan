@@ -48,6 +48,7 @@ class WordsController < ApplicationController
 
   def audio
     @word = params[:term]
+    @key = ENV["FORVO_KEY"]
         respond_to do |format|
       format.js {}
     end

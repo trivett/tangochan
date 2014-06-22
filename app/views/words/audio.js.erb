@@ -1,8 +1,11 @@
 var audio = document.getElementById('audio');
    word = '<%= @word %>'
+   key = '<%= @key %>'
    console.log(word);
+   console.log (key);
    // used to say encodeURI(word)
-    var url = 'http://apifree.forvo.com/key/b58e7ec86408b6e3c17b8216d1397d37/format/json/callback/pronounce/action/standard-pronunciation/word/'+ encodeURI(word) +'/language/ja';
+    var url = 'http://apifree.forvo.com/key/' + key + '/format/json/callback/pronounce/action/standard-pronunciation/word/'+ encodeURI(word) +'/language/ja';
+
     $.ajax({
         url: url,
         jsonpCallback: "pronounce",
