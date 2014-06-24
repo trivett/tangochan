@@ -1,0 +1,32 @@
+var audio = document.getElementById('audio');
+   word = '<%= @word %>'
+   key = '<%= @key %>'
+   console.log(word);
+   console.log (key);
+   // used to say encodeURI(word)
+    var url = 'http://apifree.forvo.com/key/' + key + '/format/json/callback/pronounce/action/standard-pronunciation/word/'+ encodeURI(word) +'/language/ja';
+
+    $.ajax({
+        url: url,
+        jsonpCallback: "pronounce",
+        dataType: "jsonp",
+        type: "jsonp",
+        success: function (json) {
+       var mp3 = json.items[0].pathmp3;
+       var ogg = json.items[0].pathogg;
+       console.log("success " + mp3)
+       var myAudio = new Audio(mp3);
+       myAudio.play();
+   },
+    error: function(){
+        console.log(encodeURI(word));
+        console.log(word);
+        console.log("error try");
+}});
+// jQuery.ajax({
+//     url: '/echo/json/',
+//     async: false,
+//     complete: function() {
+//         audio.play(); // audio will play in iOS before 4.2.1. Audio will not play in any iOS device 4.2.1 or later.
+//     }
+// });

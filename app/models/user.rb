@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   def words_badges
     self.badges.delete_all
     num = self.got_right
-
+    if num
     if num > 10
       self.badges << Badge.where(:name => "Ten Words")
     end
@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
     if num > 1000
       self.badges << (Badge.where(:name => "One Thousand Words"))
     end
-
+  end
   end
     # elsif self.words_practiced > 50 && self.words_practiced < 100
     #     self.badges << (Badge.where(:name => "Fifty Words"))

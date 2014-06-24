@@ -45,7 +45,7 @@ gem "devise"
 gem "pry-rails"
 gem "rails-erd"
 gem "nifty-generators"
-
+gem "figaro"
 
 
 # Use ActiveModel has_secure_password

@@ -29,6 +29,7 @@ class WordsController < ApplicationController
     @list = List.find(params[:list_id])
     @list.words << @word
 
+
     response.cache_control.replace(:no_cache => true)
 
     respond_to do |format|
@@ -44,6 +45,15 @@ class WordsController < ApplicationController
       format.js {}
     end
   end
+
+  def audio
+    @word = params[:term]
+    @key = ENV["FORVO_KEY"]
+        respond_to do |format|
+      format.js {}
+    end
+  end
+
 
   def remove_from_list
     @word = Word.find(params[:word_id])
