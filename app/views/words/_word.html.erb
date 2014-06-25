@@ -15,7 +15,7 @@
       <div class ="audio-button">
         <%= form_tag("/words/audio", method: "get", remote: true) do %>
               <%= hidden_field_tag(:term, word.kanji) %>
-              <%= submit_tag("pronounce kanji term", class: "button") %>
+                <%= submit_tag("pronounce term", class: "button") %>
               <% end %>
         </div>
     <% else %>
@@ -23,7 +23,7 @@
       <div class ="audio-button">
         <%= form_tag("/words/audio", method: "get", remote: true) do %>
               <%= hidden_field_tag(:term, word.kana) %>
-              <%= submit_tag("pronounce kana term", class: "button") %>
+                <%= submit_tag("pronounce term", class: "button") %>
               <% end %>
         </div>
     <% end %>
@@ -52,6 +52,6 @@
          </div>
       <% end %>
 
-  
+
   </div>
 </div>
