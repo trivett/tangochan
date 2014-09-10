@@ -17,9 +17,9 @@ class WordsController < ApplicationController
 
     @list = List.find(list)
     response.cache_control.replace(:no_cache => true)
-    respond_to do |format|
-      format.js {}
-    end
+    # respond_to do |format|
+    #   format.json {}
+    # end
   end
 
 
